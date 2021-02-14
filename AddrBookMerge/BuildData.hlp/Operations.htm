@@ -1,0 +1,73 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/OneColumnPage.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="utf-8">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Build Addr Module</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="App.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="container">
+<div class="content">
+<!-- InstanceBeginEditable name="Title" -->
+<h1>Build Addr Module</h1>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="Body" -->
+<h2><img src="Images/OpenFile03.jpg" width="16" height="15"> Open File</h2>
+<p>
+Opens a file that has been exported from Thunderbird's Address Book.  The header line of the
+CSV file is read and the names in the header line are used for the fields in the Addr Module
+Record.
+</p>
+<h2><img src="Images/PickeMail.jpg" width="16" height="15"> Pick eMail Field Name</h2>
+<p>
+A dialog is presented with the names of all the fields in the record.  The user must choose
+the field that holds the eMail address in the record.  At the time of writing it is Primary_Email.
+This fields is used to sort the address lines during the processing of the records.
+</p>
+<h2><img src="Images/Header.jpg" width="16" height="15"> Prepare Addr Module Header File</h2>
+<p>
+Use the information from the header line and the picked email field to prepare Addr.h, the header
+file of the Addr Record Module.  Setup the Save File command to save the header file to "Addr.h".
+</p>
+<h2><img src="Images/Body.jpg" width="16" height="15"> Prepare Addr Module Body File</h2>
+<p>
+Same as the header file preparation but for the body file of the module, Addr.cpp.
+</p>
+
+</p>
+<h2><img src="Images/Save.jpg" width="16" height="15"> Save File</h2>
+<p>
+Displays a Save File Dialog and saves the current file displayed in the window.
+</p>
+
+<h2><img src="Images/Option.jpg" width="16" height="15"> Options</h2>
+<p>
+The options dialog allows specifying the Display and Printer Font Size Scale Factor, the printer
+orientation and the printer margins.
+</p>
+
+<h2><img src="Images/Print.jpg" width="16" height="15"> Print</h2>
+<p>
+Will do all the normal things to print a file.
+</p>
+<h2><img src="Images/About.jpg" width="16" height="15"> About</h2>
+<p>
+Displays the About Box.  The about box uses text from the resource file (TestApp.rc) for
+the output information.  There is a standard about box dialog in the Library.
+</p>
+<h2><img src="Images/Exit.jpg" width="16" height="15"> Exit</h2>
+<p>
+Exit the application with no reservations.
+</p>
+<!-- InstanceEndEditable -->
+</div><!-- end .content -->
+</div><!-- end .container -->
+</body>
+<!-- InstanceEnd --></html>

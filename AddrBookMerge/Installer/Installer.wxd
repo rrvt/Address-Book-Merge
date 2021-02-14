@@ -1,0 +1,68 @@
+[SolutionInfo]
+Path=D:\Sources\AddrBookMerge\AddrBookMerge\
+Name=AddrBookMerge
+Version=2.0
+[Icons]
+NoIcons=2
+[Icon00]
+IconID=AddrBookMerge
+WixID=AddrBookMergeIcon.ico
+IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\AddrBookMerge.ico
+[Icon01]
+IconID=Uninstall
+WixID=UninstallIcon.ico
+IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\Uninstall.ico
+[DefaultPath]
+NPaths=2
+DefKey0=AddrBookMerge.ftr
+AddrBookMerge.ftr.Path=D:\Sources\AddrBookMerge\AddrBookMerge\
+DefKey1=Icon
+Icon.Path=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\
+[Product]
+ProductName=AddrBookMerge
+Company=Bob -- K6RWY
+WixName=AddrBookMerge
+WixVersion=1.0.1.0
+UpgradeGUID=6EB874C4-FE5E-413F-9594-C951E8B89DBA
+SaveVerAllowed=0
+LicenseRequired=0
+LicensePath=D:\Sources\AddrBookMerge\AddrBookMerge\
+IconID=Uninstall
+[PFFDirectories]
+NoDirectories=1
+[PFFDirDesc00]
+ID=AddrBookMerge
+WixID=AddrBookMerge.pff
+Parent=
+Name=AddrBookMerge
+HasChildren=0
+[PMFDirectories]
+NoDirectories=1
+[PMFDirDesc00]
+ID=Addr Book Merge
+WixID=AddrBookMerge.pmf
+Parent=
+Name=Addr Book Merge
+HasChildren=0
+[Features]
+Count=1
+CurSel=Addr Book Merge
+[Ftr00]
+FeatureID=Addr Book Merge
+ProgramID=AddrBookMerge
+StartMenuID=Addr Book Merge
+CurSel=Addr Book Merge
+NoComponents=2
+[Ftr00Cmp00]
+ID=Addr Book Merge
+Path=D:\Sources\AddrBookMerge\Release\AddrBookMerge.exe
+Guid=D70B4350-78C1-4802-AF3E-DCB84E8D6E99
+Description=Merge/Remove Duplicate/Troublesome Thunderbird Address Book eMails
+IconID=AddrBookMerge
+IsStartMenu=1
+IsDeskTop=1
+IsVersionAvail=1
+[Ftr00Cmp01]
+ID=Help
+Path=D:\Sources\AddrBookMerge\Release\AddrBookMerge.chm
+Guid=98AB4B44-698A-4649-8BEC-B38A3E3C42F6
