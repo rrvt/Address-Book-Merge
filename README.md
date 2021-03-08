@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 3/7/21
+
+Renamed PathDsc and changed the way it is initialized.
+
 ### Update 2/14/21
 
 Started with a fresh application from Make App and integrated the relevant modules from the ThdrBrdAddrBk

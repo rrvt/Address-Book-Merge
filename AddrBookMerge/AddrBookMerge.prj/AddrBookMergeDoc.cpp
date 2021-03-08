@@ -32,9 +32,8 @@ END_MESSAGE_MAP()
 
 // AddrBookMergeDoc construction/destruction
 
-AddrBookMergeDoc::AddrBookMergeDoc() noexcept : dataSource(NotePadSrc) {
-  pathDsc = {_T("Ugly Example"), _T(""), _T("txt"), _T("*.txt")};
-  }
+AddrBookMergeDoc::AddrBookMergeDoc() noexcept : dataSource(NotePadSrc),
+                                                pathDsc(_T("CSV File"), 0, _T("csv"), _T("*.csv")) { }
 
 AddrBookMergeDoc::~AddrBookMergeDoc() { }
 
@@ -57,7 +56,7 @@ String s;
 
   dataSource = AddrMergSrc;
 
-  pathDsc = {_T("CSV File"), 0, _T("csv"), _T("*.csv")};
+  pathDsc = PathDlgDsc(_T("CSV File"), 0, _T("csv"), _T("*.csv"));
 
   if (!setPath(pathDsc)) return;
 

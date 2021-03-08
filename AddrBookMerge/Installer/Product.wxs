@@ -27,8 +27,8 @@
     </Publish>
   </UI>
 
-  <WixVariable Id="WixUIDialogBmp" Value="C:\Program Files (x86)\WixApp\dialog.bmp"/>
-  <WixVariable Id="WixUIBannerBmp" Value="C:\Program Files (x86)\WixApp\banner.bmp"/>
+  <WixVariable Id="WixUIDialogBmp" Value="D:\Sources\WixApp\Debug\dialog.bmp"/>
+  <WixVariable Id="WixUIBannerBmp" Value="D:\Sources\WixApp\Debug\banner.bmp"/>
 
   <Icon     Id="AddrBookMergeIcon.ico"
                           SourceFile="$(var.SolutionDir)..\AddrBookMerge.prj\res\AddrBookMerge.ico"/>
@@ -104,8 +104,8 @@
 
 <Fragment>
 
-  <Component Id="UninstallAddrBookMerge.cmp"
-                            Guid="EBE4AF74-A4E9-47BF-A50F-97A565F8A3D2" Directory="AddrBookMerge.pmf">
+  <Component Id="UninstallAddrBookMerge.cmp" 
+                            Guid="A3ACF379-AD46-4A91-B326-E98F9D710DFA" Directory="AddrBookMerge.pmf">
 
     <Shortcut Id               = "UninstallAddrBookMerge.shc"
               Name             = "Uninstall Addr Book Merge"

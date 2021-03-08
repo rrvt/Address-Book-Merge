@@ -13,7 +13,7 @@ enum DataSource {NotePadSrc, StoreSrc, AddrMergSrc};
 
 class AddrBookMergeDoc : public CDoc {
 
-PathDesc    pathDsc;
+PathDlgDsc  pathDsc;
 
 DataSource  dataSource;
 

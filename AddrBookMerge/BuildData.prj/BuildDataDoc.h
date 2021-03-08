@@ -14,7 +14,7 @@ enum DataSource {NilSrc, NotePadSrc, AddrSrc, HeaderSrc, BodySrc, StoreSrc};
 
 class BuildDataDoc : public CDoc {
 
-PathDesc    pathDsc;
+PathDlgDsc  pathDsc;
 
 DataSource  dataSource;
 

@@ -54,9 +54,7 @@ END_MESSAGE_MAP()
 
 // BuildDataDoc construction/destruction
 
-BuildDataDoc::BuildDataDoc() noexcept : dataSource(NotePadSrc) {
-  pathDsc = {_T("Ugly Example"), _T(""), _T("txt"), _T("*.txt")};
-  }
+BuildDataDoc::BuildDataDoc() noexcept : dataSource(NotePadSrc) { }
 
 BuildDataDoc::~BuildDataDoc() { }
 
@@ -227,7 +225,7 @@ void BuildDataDoc::OnFileOpen() {
 
   notePad.clear();   dataSource = AddrSrc;
 
-  pathDsc = {_T("CSV File"), pathDsc.name, _T("csv"), _T("*.csv")};
+  pathDsc = PathDlgDsc(_T("CSV File"), pathDsc.name, _T("csv"), _T("*.csv"));
 
   if (!setPath(pathDsc)) return;
 
@@ -245,14 +243,14 @@ void BuildDataDoc::OnPickEmail() {codeBldr.onPickEmail(); display(AddrSrc);}
 
 
 void BuildDataDoc::OnPrepAddr_h() {
-  pathDsc = {_T("Save Addr.h"), _T("Addr.h"), _T("h"), _T("*.h")};
+  pathDsc = PathDlgDsc(_T("Save Addr.h"), _T("Addr.h"), _T("h"), _T("*.h"));
 
   codeBldr.OnPrepAddr_h();  display(HeaderSrc);
   }
 
 
 void BuildDataDoc::OnPrepAddr_cpp() {
-  pathDsc = {_T("Save Addr.cpp"), _T("Addr.cpp"), _T("cpp"), _T("*.cpp")};
+  pathDsc = PathDlgDsc(_T("Save Addr.cpp"), _T("Addr.cpp"), _T("cpp"), _T("*.cpp"));
 
   codeBldr.OnPrepAddr_cpp(); display(BodySrc);
   }
