@@ -78,7 +78,17 @@ BOOL AddrBookMerge::InitInstance() {
 
 
 
-void AddrBookMerge::OnFilePrintSetup() {view()->setPrntrOrient(getDevMode());   CWinApp::OnFilePrintSetup();}
+void AddrBookMerge::OnFilePrintSetup() {
+PrtrOrient orient;
+
+  view()->setPrntrOrient(getDevMode());
+
+    CWinApp::OnFilePrintSetup();
+
+  orient = view()->getPrntrOrient(getDevMode());
+
+  options.setOrient(orient);   view()->setOrientation(options.orient);
+  }
 
 
 int AddrBookMerge::ExitInstance() {
