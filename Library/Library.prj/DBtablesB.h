@@ -44,6 +44,8 @@ String name;
   DBtable(TCchar* nm) : name(nm) { }
   virtual ~DBtable() = 0;
 
+  virtual void clear() { }
+
   virtual bool load(DAOtable* daoTable) {return false;}
   virtual void store() { }
 
@@ -84,11 +86,13 @@ public:
   virtual DBtablesB& operator+= (DBtable* tbl);
   virtual DBtablesB& operator=  (DBtable* tbl);
 
+  virtual void       clear();
+
   virtual bool       load(TCchar* path);
 
   virtual DBtable*   find(TCchar* name);
 //virtual String*    primaryKey(TCchar* tableName)
-//                                 {DBtable* tbl = find(tableName);   return tbl ? &tbl->primaryKey : 0;}
+//                                {DBtable* tbl = find(tableName);   return tbl ? &tbl->primaryKey : 0;}
 virtual   void       display();
 
 private:

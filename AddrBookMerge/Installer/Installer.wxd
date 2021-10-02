@@ -1,7 +1,13 @@
 [SolutionInfo]
-Path=D:\Sources\AddrBookMerge\AddrBookMerge\
+Path=D:\Sources\AddrBookMerge\AddrBookMerge\AddrBookMerge.sln
 Name=AddrBookMerge
 Version=2.0
+[DefaultPath]
+NPaths=2
+DefKey0=AddrBookMerge.ftr
+AddrBookMerge.ftr.Path=D:\Sources\AddrBookMerge\AddrBookMerge\
+DefKey1=Icon
+Icon.Path=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\
 [Icons]
 NoIcons=2
 [Icon00]
@@ -12,17 +18,11 @@ IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\AddrBookMerge.ico
 IconID=Uninstall
 WixID=UninstallIcon.ico
 IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\Uninstall.ico
-[DefaultPath]
-NPaths=2
-DefKey0=AddrBookMerge.ftr
-AddrBookMerge.ftr.Path=D:\Sources\AddrBookMerge\AddrBookMerge\
-DefKey1=Icon
-Icon.Path=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\
 [Product]
 ProductName=AddrBookMerge
 Company=Bob -- K6RWY
 WixName=AddrBookMerge
-WixVersion=1.0.1.0
+WixVersion=1.0.2.0
 UpgradeGUID=6EB874C4-FE5E-413F-9594-C951E8B89DBA
 SaveVerAllowed=0
 LicenseRequired=0

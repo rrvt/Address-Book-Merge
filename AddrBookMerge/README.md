@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 10/2/21
+
+Library improvements only.
+
 ### Update 4/14/21
 
 Just some minor changes.

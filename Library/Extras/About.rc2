@@ -1,6 +1,5 @@
-//
 // About.RC2 - resources Microsoft Visual C++ does not edit directly
-//
+
 
 #ifdef APSTUDIO_INVOKED
 #error this file is not editable by Microsoft Visual C++
@@ -26,6 +25,6 @@ END
 
 STRINGTABLE
 BEGIN
-  ID_App_About   "Display program information, version number and copyright\nAbout"
+  ID_App_About   "Display program information, version number and copyright\nDisplay program information, version number and copyright"
 END
 
