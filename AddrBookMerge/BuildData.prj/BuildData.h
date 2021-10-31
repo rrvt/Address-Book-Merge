@@ -21,9 +21,9 @@ public:
   virtual BOOL InitInstance();
   virtual int  ExitInstance();
 
-          BuildDataDoc*  doc()  {return (BuildDataDoc*)  CApp::getDoc();}
-          BuildDataView* view() {return (BuildDataView*) CApp::getView();}
-          MainFrame*       mainFrm() {return (MainFrame*) m_pMainWnd;}
+          BuildDataDoc*  doc()     {return (BuildDataDoc*)  CApp::getDoc();}
+          BuildDataView* view()    {return (BuildDataView*) CApp::getView();}
+          MainFrame*     mainFrm() {return (MainFrame*) m_pMainWnd;}
 
   DECLARE_MESSAGE_MAP()
 
@@ -35,7 +35,7 @@ public:
 
 extern BuildData theApp;
 
-inline void         invalidate() {theApp.invalidate();}
-inline BuildDataDoc*  doc()  {return theApp.doc();}
-inline BuildDataView* view() {return theApp.view();}
+inline void           invalidate() {theApp.invalidate();}
+inline BuildDataDoc*  doc()        {return theApp.doc();}
+inline BuildDataView* view()       {return theApp.view();}
 

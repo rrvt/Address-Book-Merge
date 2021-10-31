@@ -42,9 +42,6 @@
     <ClInclude Include="StoreRpt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Library\Extras\About.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Library\Extras\ExtraResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,13 +54,13 @@
     <ClInclude Include="AddrBook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CsvLex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CSVrcd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CSVrcds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Library\Extras\AboutDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,9 +86,6 @@
     <ClCompile Include="StoreRpt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Library\Extras\About.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -101,10 +95,10 @@
     <ClCompile Include="AddrBook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CsvLex.cpp">
+    <ClCompile Include="CSVrcds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CSVrcds.cpp">
+    <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -118,13 +112,13 @@
     <None Include="res\AddrBookMerge.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\Library\Extras\About.rc2">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="..\..\Library\Extras\Options.rc2">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="res\Toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Library\Extras\AboutDlg.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
