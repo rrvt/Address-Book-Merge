@@ -290,7 +290,7 @@ AddrRcd* rcd;
 
       mergeDups(iter);
 
-      nxt.remove();
+      nxt.remove();   iter--;
       }
     }
   }
