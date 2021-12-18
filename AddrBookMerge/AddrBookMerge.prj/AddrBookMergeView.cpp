@@ -69,7 +69,6 @@ void AddrBookMergeView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
   switch(doc()->dataSrc()) {
     case AddrMergSrc:
     case NotePadSrc : setOrientation(options.orient); break;    // Setup separate Orientation?
-    case StoreSrc   : setOrientation(options.orient); break;
     }
   setPrntrOrient(theApp.getDevMode(), pDC);   CScrView::OnBeginPrinting(pDC, pInfo);
   }
@@ -95,7 +94,6 @@ void AddrBookMergeView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {
   switch(doc()->dataSrc()) {
     case AddrMergSrc:
     case NotePadSrc : break;
-    case StoreSrc   : break;
     }
   }
 
@@ -107,7 +105,6 @@ void AddrBookMergeView::OnSetFocus(CWnd* pOldWnd) {
   switch(doc()->dataSrc()) {
     case AddrMergSrc:
     case NotePadSrc : break;
-    case StoreSrc   : break;
     }
   }
 

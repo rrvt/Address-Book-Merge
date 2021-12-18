@@ -8,7 +8,7 @@
 #include "TBEditBox.h"
 
 
-enum DataSource {NotePadSrc, StoreSrc, AddrMergSrc};
+enum DataSource {NotePadSrc, AddrMergSrc};
 
 
 class AddrBookMergeDoc : public CDoc {

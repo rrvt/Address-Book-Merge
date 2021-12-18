@@ -5,7 +5,7 @@
 #include "CSVRcd.h"
 
 
-typedef RcdPtrT< CSVRcd> CSVRcdP;
+typedef DatumPtrT< CSVRcd> CSVRcdP;
 typedef CSVRcdsT<CSVRcd, CSVRcdP> CSVRcds;
 typedef CSVIterT<CSVRcd, CSVRcdP> CSVIter;
 

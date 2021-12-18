@@ -21,7 +21,7 @@ AddrRcd* p;
 
 
 class  AddrBook;
-typedef RcdPtrT<AddrRcd> AddrRcdP;
+typedef DatumPtrT<AddrRcd> AddrRcdP;
 typedef IterT<AddrBook, AddrRcd> ABIter;
 
 

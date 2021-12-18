@@ -18,9 +18,6 @@ END_MESSAGE_MAP()
 
 
 BuildDataView::BuildDataView() noexcept :
-                                          #ifdef Examples
-                                            dspStore(dMgr.getNotePad()), prtStore(pMgr.getNotePad()),
-                                          #endif
                                           dspNote( dMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
 ResourceData res;
 String       pn;
@@ -56,9 +53,6 @@ DataSource ds = doc()->dataSrc();
       case HeaderSrc  :
       case BodySrc    :
       case NotePadSrc : prtNote.print(*this);  break;
-#ifdef Examples
-      case StoreSrc   : prtStore.print(*this); break;
-#endif
       }
 
   else
@@ -67,9 +61,6 @@ DataSource ds = doc()->dataSrc();
       case HeaderSrc  :
       case BodySrc    :
       case NotePadSrc : dspNote.display(*this);  break;
-#ifdef Examples
-      case StoreSrc   : dspStore.display(*this); break;
-#endif
       }
 
 
@@ -84,7 +75,6 @@ void BuildDataView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
     case HeaderSrc  :
     case BodySrc    :
     case NotePadSrc : setOrientation(options.orient); break;    // Setup separate Orientation?
-    case StoreSrc   : setOrientation(options.orient); break;
     }
   setPrntrOrient(theApp.getDevMode(), pDC);   CScrView::OnBeginPrinting(pDC, pInfo);
   }
@@ -100,9 +90,6 @@ void BuildDataView::printFooter(Device& dev, int pageNo) {
     case HeaderSrc  :
     case BodySrc    :
     case NotePadSrc : prtNote.footer(dev, pageNo);  break;
-#ifdef Examples
-    case StoreSrc   : prtStore.footer(dev, pageNo); break;
-#endif
     }
   }
 
@@ -117,7 +104,6 @@ void BuildDataView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {
     case HeaderSrc  :
     case BodySrc    :
     case NotePadSrc : break;
-    case StoreSrc   : break;
     }
   }
 
@@ -131,7 +117,6 @@ void BuildDataView::OnSetFocus(CWnd* pOldWnd) {
     case HeaderSrc  :
     case BodySrc    :
     case NotePadSrc : break;
-    case StoreSrc   : break;
     }
   }
 

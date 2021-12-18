@@ -2,10 +2,10 @@
 
 
 #pragma once
-#include "IterT.h"
 #include "CSVRcdB.h"
 #include "CSVRcdsT.h"
 #include "ExpandableP.h"
+#include "IterT.h"
 
 
 class CSVfld {
@@ -32,7 +32,7 @@ private:
 
 
 class CSVRcd;
-typedef RcdPtrT<CSVfld> CSVFldP;
+typedef DatumPtrT<CSVfld> CSVFldP;
 typedef IterT<CSVRcd, CSVfld> CFldIter;
 
 

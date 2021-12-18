@@ -62,24 +62,12 @@ int MainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
   }
 
 
-void MainFrame::setupToolBar() {
-#ifdef Examples
-  if ( !menu.m_hMenu)  menu.LoadMenu(IDR_PopupMenu);
-  if (!menu2.m_hMenu) menu2.LoadMenu(IDR_PopupMenu2);
-
-  toolBar.setBtnCtrl(ID_MyBtn,  _T("Load Combo"), 100);
-  toolBar.setCbxCtrl(ID_CB,      100, 500);
-  toolBar.setEbxCtrl(ID_EditBox, 100);
-  toolBar.setMnuCtrl(ID_MyBtn1, menu.GetSafeHmenu(),  _T("Menu 1"));
-  toolBar.setMnuCtrl(ID_Btn2,   menu2.GetSafeHmenu(), _T("Menu 2"));
-#endif
-  toolBar.install();
-  }
-
-
 // MainFrame message handlers
 
 afx_msg LRESULT MainFrame::OnResetToolBar(WPARAM wParam, LPARAM lParam) {setupToolBar();  return 0;}
+
+
+void MainFrame::setupToolBar() { }
 
 
 // MainFrame diagnostics
