@@ -12,7 +12,76 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2AE35E60-34FB-4C83-AF80-CC422C5921E3}</ProjectGuid>
+    <ProjectGuid>{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>nmake $(Configuration)/AddrBookMerge.chm</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>nmake $(Configuration)/Rebuild.rbd</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>nmake /D /P  $(Configuration)/Clean.cln</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>nmake $(Configuration)/AddrBookMerge.chm</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>nmake $(Configuration)/Rebuild.rbd</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>nmake /D /P  $(Configuration)/Clean.cln</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.css" />
+    <None Include="helpComp.bat" />
+    <None Include="Introduction.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="makefile" />
+    <None Include="Operations.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Templates\OneColumnPage.dwt" />
+    <None Include="AddrBookMerge.hhc" />
+    <None Include="AddrBookMerge.hhp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{E4DDF744-0528-42BC-B563-EB576EEB2324}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>TestApp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
@@ -59,13 +128,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+        WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)
+      </PreprocessorDefinitions>
       <AdditionalIncludeDirectories>
         $(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <BasicRuntimeChecks />
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <WholeProgramOptimization>true</WholeProgramOptimization>
     </ClCompile>
@@ -97,7 +168,9 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+        WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)
+      </PreprocessorDefinitions>
       <AdditionalIncludeDirectories>
         $(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
@@ -106,7 +179,6 @@
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <BasicRuntimeChecks />
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -115,7 +187,6 @@
       <AdditionalDependencies>Htmlhelp.lib</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
-      <ProgramDatabaseFile />
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -132,47 +203,48 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Library\Extras\AboutDlg.h" />
-    <ClInclude Include="Addr.h" />
-    <ClInclude Include="AddrBook.h" />
-    <ClInclude Include="AddrBookMerge.h" />
-    <ClInclude Include="AddrBookMergeDoc.h" />
-    <ClInclude Include="AddrBookMergeView.h" />
+    <ClInclude Include="BuildData.h" />
+    <ClInclude Include="BuildDataDoc.h" />
+    <ClInclude Include="BuildDataView.h" />
+    <ClInclude Include="CodeBldr.h" />
     <ClInclude Include="CSVrcd.h" />
     <ClInclude Include="CSVrcds.h" />
     <ClInclude Include="..\..\Library\Extras\ExtraResource.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
+    <ClInclude Include="PickEmailDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp" />
-    <ClCompile Include="Addr.cpp" />
-    <ClCompile Include="AddrBook.cpp" />
-    <ClCompile Include="AddrBookMerge.cpp" />
-    <ClCompile Include="AddrBookMergeDoc.cpp" />
-    <ClCompile Include="AddrBookMergeView.cpp" />
+    <ClCompile Include="BuildData.cpp" />
+    <ClCompile Include="BuildDataDoc.cpp" />
+    <ClCompile Include="BuildDataView.cpp" />
+    <ClCompile Include="CodeBldr.cpp" />
     <ClCompile Include="CSVrcds.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
+    <ClCompile Include="PickEmailDlg.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
-  <ItemGroup><ResourceCompile Include="AddrBookMerge.rc" /></ItemGroup>
+  <ItemGroup><ResourceCompile Include="BuildData.rc" /></ItemGroup>
   <ItemGroup>
     <None Include="..\..\Library\Extras\AboutDlg.rc2" />
-    <None Include="res\AddrBookMerge.rc2" />
+    <None Include="res\BuildData.rc2" />
     <None Include="..\..\Library\Extras\Options.rc2" />
     <None Include="..\README.md" />
     <None Include="res\Toolbar.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\AddrBookMerge.ico" />
+    <Image Include="res\BuildData.ico" />
     <Image Include="res\ShortToolbar.bmp" />
+    <Image Include="res\ShortToolbar05.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Library.prj\Library.vcxproj">
-      <Project>{840A1AC8-BA04-42FE-BE9D-8B9894B59A76}</Project>
+      <Project>{E8053BEF-84B1-4D21-83E1-A5CD2D0D8723}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

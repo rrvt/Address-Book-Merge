@@ -36,12 +36,6 @@
     <ClInclude Include="AddrBookMergeView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Store.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StoreRpt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Library\Extras\ExtraResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,12 +72,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddrBookMergeView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Store.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StoreRpt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp">

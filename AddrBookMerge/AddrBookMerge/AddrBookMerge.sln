@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddrBookMergeHelp", "..\AddrBookMerge.hlp\AddrBookMergeHelp.vcxproj", "{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddrBookMerge", "..\AddrBookMerge.prj\AddrBookMerge.vcxproj", "{2AE35E60-34FB-4C83-AF80-CC422C5921E3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396} = {ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}
@@ -14,6 +12,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddrBookMerge", "..\AddrBoo
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Library", "..\..\Library\Library.prj\Library.vcxproj", "{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396} = {ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}
+		{EB736248-C20E-4279-9761-63B9C08611C5} = {EB736248-C20E-4279-9761-63B9C08611C5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BuildData", "..\BuildData.prj\BuildData.vcxproj", "{E4DDF744-0528-42BC-B563-EB576EEB2324}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -22,14 +24,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BuildData", "..\BuildData.p
 		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B} = {CF57F3EC-D3DB-4469-8519-3F9D73785D9B}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BuildDataHelp", "..\BuildData.hlp\BuildDataHelp.vcxproj", "{EB736248-C20E-4279-9761-63B9C08611C5}"
-EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "..\Installer\Installer.wixproj", "{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "AddrBookMergeWix", "..\AddrBookMerge.wix\AddrBookMergeWix.wixproj", "{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}"
 	ProjectSection(ProjectDependencies) = postProject
 		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396} = {ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}
+		{E4DDF744-0528-42BC-B563-EB576EEB2324} = {E4DDF744-0528-42BC-B563-EB576EEB2324}
+		{EB736248-C20E-4279-9761-63B9C08611C5} = {EB736248-C20E-4279-9761-63B9C08611C5}
 		{2AE35E60-34FB-4C83-AF80-CC422C5921E3} = {2AE35E60-34FB-4C83-AF80-CC422C5921E3}
 		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B} = {CF57F3EC-D3DB-4469-8519-3F9D73785D9B}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddrBookMergeHlp", "..\AddrBookMerge.hlp\AddrBookMergeHlp.vcxproj", "{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BuildDataHlp", "..\BuildData.hlp\BuildDataHlp.vcxproj", "{EB736248-C20E-4279-9761-63B9C08611C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +43,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Debug|Win32.ActiveCfg = Debug|Win32
-		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Debug|Win32.Build.0 = Debug|Win32
-		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Release|Win32.ActiveCfg = Release|Win32
-		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Release|Win32.Build.0 = Release|Win32
 		{2AE35E60-34FB-4C83-AF80-CC422C5921E3}.Debug|Win32.ActiveCfg = Debug|Win32
 		{2AE35E60-34FB-4C83-AF80-CC422C5921E3}.Debug|Win32.Build.0 = Debug|Win32
 		{2AE35E60-34FB-4C83-AF80-CC422C5921E3}.Release|Win32.ActiveCfg = Release|Win32
@@ -53,13 +55,17 @@ Global
 		{E4DDF744-0528-42BC-B563-EB576EEB2324}.Debug|Win32.Build.0 = Debug|Win32
 		{E4DDF744-0528-42BC-B563-EB576EEB2324}.Release|Win32.ActiveCfg = Release|Win32
 		{E4DDF744-0528-42BC-B563-EB576EEB2324}.Release|Win32.Build.0 = Release|Win32
+		{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}.Debug|Win32.ActiveCfg = Debug|x86
+		{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}.Release|Win32.ActiveCfg = Release|x86
+		{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}.Release|Win32.Build.0 = Release|x86
+		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Debug|Win32.Build.0 = Debug|Win32
+		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Release|Win32.ActiveCfg = Release|Win32
+		{ABA0D832-6F88-4EA1-82BF-75DE5EEDF396}.Release|Win32.Build.0 = Release|Win32
 		{EB736248-C20E-4279-9761-63B9C08611C5}.Debug|Win32.ActiveCfg = Debug|Win32
 		{EB736248-C20E-4279-9761-63B9C08611C5}.Debug|Win32.Build.0 = Debug|Win32
 		{EB736248-C20E-4279-9761-63B9C08611C5}.Release|Win32.ActiveCfg = Release|Win32
 		{EB736248-C20E-4279-9761-63B9C08611C5}.Release|Win32.Build.0 = Release|Win32
-		{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}.Debug|Win32.ActiveCfg = Debug|x86
-		{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}.Release|Win32.ActiveCfg = Release|x86
-		{E153F1A1-4AF8-4C46-9ADF-3265DD88D079}.Release|Win32.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
