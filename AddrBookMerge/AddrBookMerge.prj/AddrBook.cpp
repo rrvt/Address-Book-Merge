@@ -6,7 +6,7 @@
 #include "CSVrcds.h"
 #include "NotePad.h"
 #include "match.h"
-#include "qsort.h"
+//#include "qsort.h"
 
 
 AddrBook addrBook;
@@ -21,7 +21,7 @@ void AddrBook::onProcess() {
 
   removeTroublesomeEmails();
 
-  sort();
+//  sort();
 
   noDups();
   }
@@ -33,23 +33,23 @@ CSVRcd*  csvRcd;
 bool     isHeader   = true;
 bool     invalidMsg = false;
 
-  notePad.clear();   rcds.clear();
+  notePad.clear();   data.clear();
 
   for (csvRcd = iter(); csvRcd; csvRcd = iter++) {
 
     if (isHeader) {header = *csvRcd;   isHeader = false;   continue;}
 
-    AddrRcd* addrRcd = rcds.allocate();     if (!addrRcd) continue;
+    AddrRcd* addrRcd = data.allocate();     if (!addrRcd) continue;
 
     *addrRcd = *csvRcd;
 
     if (!validate(*addrRcd)) {
       if (!invalidMsg) {notePad << _T("Invalid Entries") << nCrlf << nCrlf; invalidMsg = true;}
 
-      addrRcd->dspAsCSV();   rcds.deallocate(addrRcd);   continue;
+      addrRcd->dspAsCSV();   data.deallocate(addrRcd);   continue;
       }
 
-    rcds += addrRcd;
+    data = addrRcd;
     }
   }
 
@@ -266,14 +266,6 @@ bool AddrBook::displIsEmail(AddrRcd& rcd) {
   }
 
 
-void AddrBook::sort() {
-int last = rcds.end()-1;
-
-  qsort(&rcds[0], &rcds[last]);
-  }
-
-
-
 void AddrBook::noDups() {
 ABIter   iter(*this);
 AddrRcd* rcd;
@@ -345,7 +337,7 @@ String   s;
 
   notePad << nCrlf;
 
-  s.format(_T("Number of Address Records: %i"), rcds.end());  notePad << s << nCrlf << nCrlf;
+  notePad << _T("Number of Address Records: ") << nData() << nCrlf << nCrlf;
 
   for (rcd = iter(); rcd; rcd = iter++) rcd->dspAsCSV();
   }
@@ -359,4 +351,14 @@ AddrRcd* rcd;
 
   for (rcd = iter(); rcd; rcd = iter++) rcd->dataOut(ar);
   }
+
+
+
+#if 0
+void AddrBook::sort() {
+int last = rcds.end()-1;
+
+  qsort(&rcds[0], &rcds[last]);
+  }
+#endif
 

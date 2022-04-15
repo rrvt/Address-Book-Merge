@@ -54,11 +54,13 @@ String Notes;
   void     dspAsCSV();
   void     dataOut(Archive& ar);
 
+  // Required for Insertion Sort, i.e. data = dtm;
+  bool     operator>= (AddrRcd& x) {return _tcsicmp(Primary_Email, x.Primary_Email) >= 0;}
   bool     operator== (AddrRcd& x) {return _tcsicmp(Primary_Email, x.Primary_Email) == 0;}
+
   bool     operator!= (AddrRcd& x) {return _tcsicmp(Primary_Email, x.Primary_Email) != 0;}
   bool     operator>  (AddrRcd& x) {return _tcsicmp(Primary_Email, x.Primary_Email) >  0;}
   bool     operator<  (AddrRcd& x) {return _tcsicmp(Primary_Email, x.Primary_Email) <  0;}
-  bool     operator>= (AddrRcd& x) {return _tcsicmp(Primary_Email, x.Primary_Email) >= 0;}
   bool     operator<= (AddrRcd& x) {return _tcsicmp(Primary_Email, x.Primary_Email) <= 0;}
 
 // returns either a pointer to data (or datum) at index i in array or zero

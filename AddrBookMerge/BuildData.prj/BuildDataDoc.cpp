@@ -46,7 +46,7 @@ void BuildDataDoc::OnFileOpen() {
 
   notePad.clear();   dataSource = AddrSrc;
 
-  pathDsc = PathDlgDsc(_T("CSV File"), pathDsc.name, _T("csv"), _T("*.csv"));
+  pathDsc(_T("CSV File"), pathDsc.name, _T("csv"), _T("*.csv"));
 
   if (!setPath(pathDsc)) return;
 
@@ -62,14 +62,15 @@ void BuildDataDoc::OnPickEmail() {codeBldr.onPickEmail(); display(AddrSrc);}
 
 
 void BuildDataDoc::OnPrepAddr_h() {
-  pathDsc = PathDlgDsc(_T("Save Addr.h"), _T("Addr.h"), _T("h"), _T("*.h"));
+  pathDsc(_T("Save Addr.h"), _T("Addr.h"), _T("h"), _T("*.h"));
 
   codeBldr.OnPrepAddr_h();  display(HeaderSrc);
   }
 
 
 void BuildDataDoc::OnPrepAddr_cpp() {
-  pathDsc = PathDlgDsc(_T("Save Addr.cpp"), _T("Addr.cpp"), _T("cpp"), _T("*.cpp"));
+
+  pathDsc(_T("Save Addr.cpp"), _T("Addr.cpp"), _T("cpp"), _T("*.cpp"));
 
   codeBldr.OnPrepAddr_cpp(); display(BodySrc);
   }
