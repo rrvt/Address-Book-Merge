@@ -18,16 +18,16 @@ public:
 
                BuildData() noexcept : CApp(this) { }
 
-  virtual BOOL InitInstance();
-  virtual int  ExitInstance();
+  virtual BOOL   InitInstance();
+  virtual int    ExitInstance();
 
-          BuildDataDoc*  doc()     {return (BuildDataDoc*)  CApp::getDoc();}
-          BuildDataView* view()    {return (BuildDataView*) CApp::getView();}
-          MainFrame*     mainFrm() {return (MainFrame*) m_pMainWnd;}
+  BuildDataDoc*  doc()     {return (BuildDataDoc*)  CApp::getDoc();}
+  BuildDataView* view()    {return (BuildDataView*) CApp::getView();}
+  MainFrame*     mainFrm() {return (MainFrame*) m_pMainWnd;}
 
   DECLARE_MESSAGE_MAP()
 
-  afx_msg void OnFilePrintSetup();
+//  afx_msg void OnFilePrintSetup();
   afx_msg void OnAppAbout();
   afx_msg void OnHelp();
   };

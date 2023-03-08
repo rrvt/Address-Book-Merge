@@ -58,5 +58,4 @@ public:
   afx_msg void OnPrepAddr_h();
   afx_msg void OnPrepAddr_cpp();
   afx_msg void OnFileSave();
-  afx_msg void OnOptions();
   };

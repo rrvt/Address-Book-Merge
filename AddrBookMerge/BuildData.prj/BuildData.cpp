@@ -8,7 +8,7 @@
 #include "IniFile.h"
 #include "MainFrame.h"
 #include "NotePad.h"
-#include "Options.h"
+#include "OptionsDlg.h"
 #include "BuildDataDoc.h"
 #include "BuildDataView.h"
 
@@ -20,7 +20,7 @@ IniFile     iniFile;
 // BuildData
 
 BEGIN_MESSAGE_MAP(BuildData, CWinAppEx)
-  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
+//  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
   ON_COMMAND(ID_Help,             &OnHelp)
   ON_COMMAND(ID_App_About,        &OnAppAbout)
 END_MESSAGE_MAP()
@@ -70,14 +70,12 @@ BOOL BuildData::InitInstance() {
 
   view()->setFont(_T("Courier New"), 12.0);
 
-  options.load();    view()->setOrientation(options.orient);
-
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
   }
 
 
 
-void BuildData::OnFilePrintSetup() {view()->setPrntrOrient(getDevMode());   CWinApp::OnFilePrintSetup();}
+//void BuildData::OnFilePrintSetup() {view()->setPrntrOrient(getDevMode());   CWinApp::OnFilePrintSetup();}
 
 
 int BuildData::ExitInstance() {

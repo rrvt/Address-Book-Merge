@@ -84,6 +84,15 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 3/7/23
+
+Fixed (hopefully) Print and Print Preview.  See MakeApp for details.
+
+### Update 10/30/22
+
+All logic to start app with same position and size as when it last exited.  Update toolbar background.
+Update help file icons.
+
 ### Update 8/3/22
 
 Minor Library update.

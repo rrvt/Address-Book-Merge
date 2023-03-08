@@ -56,5 +56,4 @@ public:
   afx_msg void OnAddBook();
   afx_msg void OnProcess();
   afx_msg void OnFileSave();
-  afx_msg void OnOptions();
   };

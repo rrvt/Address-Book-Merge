@@ -10,7 +10,7 @@
 #include "GetPathDlg.h"
 #include "MessageBox.h"
 #include "NotePad.h"
-#include "Options.h"
+#include "OptionsDlg.h"
 #include "Resource.h"
 #include "ToolBar.h"
 
@@ -25,7 +25,6 @@ BEGIN_MESSAGE_MAP(BuildDataDoc, CDoc)
   ON_COMMAND(ID_PrepAddr_h,    &OnPrepAddr_h)
   ON_COMMAND(ID_PrepAddr_cpp,  &OnPrepAddr_cpp)
   ON_COMMAND(ID_File_Save,     &OnFileSave)
-  ON_COMMAND(ID_Options,       &OnOptions)
 END_MESSAGE_MAP()
 
 
@@ -39,16 +38,13 @@ BuildDataDoc::~BuildDataDoc() { }
 BOOL BuildDataDoc::OnNewDocument() {return CDocument::OnNewDocument();}
 
 
-void BuildDataDoc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
-
-
 void BuildDataDoc::OnFileOpen() {
 
   notePad.clear();   dataSource = AddrSrc;
 
   pathDsc(_T("CSV File"), pathDsc.name, _T("csv"), _T("*.csv"));
 
-  if (!setPath(pathDsc)) return;
+  if (!setOpenPath(pathDsc)) return;
 
   pathDsc.name = getMainName(path);
 

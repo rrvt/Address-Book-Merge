@@ -22,16 +22,19 @@ protected: // create from serialization only
 
 public:
 
-  virtual ~AddrBookMergeView() { }
+  virtual        ~AddrBookMergeView() { }
 
-  virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+  virtual BOOL    PreCreateWindow(CREATESTRUCT& cs);
 
-  virtual void OnPrepareDC(CDC* pDC, CPrintInfo* pInfo = NULL);
-  virtual void onPrepareOutput(bool printing);
+  virtual void    displayHeader(DevBase& dev);
+  virtual void    displayFooter(DevBase& dev);
 
-  virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
-  virtual void printFooter(Device& dev, int pageNo);
-  virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+  virtual void    onBeginPrinting();
+  virtual void    onDisplayOutput();
+
+  virtual void    printHeader(DevBase& dev, int pageNo);
+  virtual void    printFooter(DevBase& dev, int pageNo);
+  virtual void    OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
   AddrBookMergeDoc* GetDocument() const;
 
@@ -46,12 +49,13 @@ public:
 
   DECLARE_MESSAGE_MAP()
 
+  afx_msg void onOptions();
   afx_msg void OnSetFocus(CWnd* pOldWnd);
   };
 
 
 #ifndef _DEBUG  // debug version in AddrBookMergeView.cpp
 inline AddrBookMergeDoc* AddrBookMergeView::GetDocument() const
-   { return reinterpret_cast<AddrBookMergeDoc*>(m_pDocument); }
+                                                {return reinterpret_cast<AddrBookMergeDoc*>(m_pDocument);}
 #endif
 

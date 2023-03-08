@@ -5,7 +5,8 @@
 #include "BuildDataView.h"
 #include "BuildData.h"
 #include "BuildDataDoc.h"
-#include "Options.h"
+#include "OptionsDlg.h"
+#include "Resource.h"
 #include "Resources.h"
 
 
@@ -14,11 +15,11 @@
 IMPLEMENT_DYNCREATE(BuildDataView, CScrView)
 
 BEGIN_MESSAGE_MAP(BuildDataView, CScrView)
+  ON_COMMAND(ID_Options, &onOptions)
 END_MESSAGE_MAP()
 
 
-BuildDataView::BuildDataView() noexcept :
-                                          dspNote( dMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
+BuildDataView::BuildDataView() noexcept : dspNote( dMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
 ResourceData res;
 String       pn;
   if (res.getProductName(pn)) prtNote.setTitle(pn);
@@ -31,52 +32,47 @@ BOOL BuildDataView::PreCreateWindow(CREATESTRUCT& cs) {
   }
 
 
-void BuildDataView::OnPrepareDC(CDC* pDC, CPrintInfo* pInfo) {
-uint   x;
-double topMgn   = options.topMargin.stod(x);
-double leftMgn  = options.leftMargin.stod(x);
-double rightMgn = options.rightMargin.stod(x);
-double botMgn   = options.botMargin.stod(x);
+void BuildDataView::onOptions() {
+OptionsDlg dlg;
 
-  setMgns(leftMgn,  topMgn,  rightMgn, botMgn, pDC);   CScrView::OnPrepareDC(pDC, pInfo);
+  if (printer.name.isEmpty()) printer.load(0);
+
+  if (dlg.DoModal() == IDOK) pMgr.setFontScale(printer.scale);
   }
+
 
 
 // Perpare output (i.e. report) then start the output with the call to SCrView
 
-void BuildDataView::onPrepareOutput(bool printing) {
-DataSource ds = doc()->dataSrc();
-
-  if (printing)
-    switch(ds) {
-      case AddrSrc    :
-      case HeaderSrc  :
-      case BodySrc    :
-      case NotePadSrc : prtNote.print(*this);  break;
-      }
-
-  else
-    switch(ds) {
-      case AddrSrc    :
-      case HeaderSrc  :
-      case BodySrc    :
-      case NotePadSrc : dspNote.display(*this);  break;
-      }
-
-
-  CScrView::onPrepareOutput(printing);
-  }
-
-
-void BuildDataView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
+void BuildDataView::onBeginPrinting() {
 
   switch(doc()->dataSrc()) {
     case AddrSrc    :
     case HeaderSrc  :
     case BodySrc    :
-    case NotePadSrc : setOrientation(options.orient); break;    // Setup separate Orientation?
+    case NotePadSrc : prtNote.onBeginPrinting(*this);  break;
     }
-  setPrntrOrient(theApp.getDevMode(), pDC);   CScrView::OnBeginPrinting(pDC, pInfo);
+  }
+
+
+void BuildDataView::onDisplayOutput() {
+
+  switch(doc()->dataSrc()) {
+    case AddrSrc    :
+    case HeaderSrc  :
+    case BodySrc    :
+    case NotePadSrc : dspNote.display(*this);  break;
+    }
+  }
+
+
+void BuildDataView::printHeader(DevBase& dev, int pageNo) {
+  switch(doc()->dataSrc()) {
+    case AddrSrc   :
+    case HeaderSrc :
+    case BodySrc   :
+    case NotePadSrc: prtNote.prtHeader(dev, pageNo);   break;
+    }
   }
 
 
@@ -84,20 +80,18 @@ void BuildDataView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
 // The output streaming functions are very similar to NotePad's streaming functions so it should not
 // be a great hardship to construct a footer.
 
-void BuildDataView::printFooter(Device& dev, int pageNo) {
+void BuildDataView::printFooter(DevBase& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case AddrSrc    :
     case HeaderSrc  :
     case BodySrc    :
-    case NotePadSrc : prtNote.footer(dev, pageNo);  break;
+    case NotePadSrc : prtNote.prtFooter(dev, pageNo);  break;
     }
   }
 
 
 
 void BuildDataView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {
-
-  CScrView::OnEndPrinting(pDC, pInfo);
 
   switch(doc()->dataSrc()) {
     case AddrSrc    : break;
@@ -127,9 +121,9 @@ void BuildDataView::OnSetFocus(CWnd* pOldWnd) {
 
 void BuildDataView::AssertValid() const {CScrollView::AssertValid();}
 
-void BuildDataView::Dump(CDumpContext& dc) const {CScrollView::Dump(dc);}
-                                             // non-debug version is inline
+void BuildDataView::Dump(CDumpContext& dc) const {CScrollView::Dump(dc);} // non-debug version is inline
+
 BuildDataDoc* BuildDataView::GetDocument() const
-  {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(BuildDataDoc))); return (BuildDataDoc*)m_pDocument;}
+          {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(BuildDataDoc))); return (BuildDataDoc*)m_pDocument;}
 
 #endif //_DEBUG

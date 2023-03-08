@@ -59,11 +59,11 @@
       <Directory Id="AddrBookMerge.pff" Name="AddrBookMerge" />
     </Directory>
 
-    <Directory Id="ProgramMenuFolder" Name="StartMenu">
+    <Directory Id="ProgramMenuFolder">
       <Directory Id="AddrBookMerge.pmf" Name="Addr Book Merge" />
     </Directory>
 
-    <Directory Id="DesktopFolder" Name="Desktop" />
+    <Directory Id="DesktopFolder" />
   </Directory>
 
   <Property Id="ApplicationFolderName" Value="AddrBookMerge" />
@@ -105,7 +105,7 @@
 <Fragment>
 
   <Component Id="UninstallAddrBookMerge.cmp" 
-                            Guid="791C06D2-4A86-48B2-AC2F-7765EAEA4DC7" Directory="AddrBookMerge.pmf">
+                            Guid="87DAA8E1-6B69-402A-BF6B-B378FB93ABAD" Directory="AddrBookMerge.pmf">
 
     <Shortcut Id               = "UninstallAddrBookMerge.shc"
               Name             = "Uninstall Addr Book Merge"

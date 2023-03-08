@@ -4,11 +4,10 @@
 #include "stdafx.h"
 #include "AddrBookMerge.h"
 #include "AboutDlg.h"
-#include "ExtraResource.h"
 #include "IniFile.h"
 #include "MainFrame.h"
 #include "NotePad.h"
-#include "Options.h"
+#include "Resource.h"
 #include "AddrBookMergeDoc.h"
 #include "AddrBookMergeView.h"
 
@@ -21,7 +20,6 @@ IniFile     iniFile;
 
 BEGIN_MESSAGE_MAP(AddrBookMerge, CWinAppEx)
   ON_COMMAND(ID_File_New,         &CWinAppEx::OnFileNew)
-  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
   ON_COMMAND(ID_Help,             &OnHelp)
   ON_COMMAND(ID_App_About,        &OnAppAbout)
 END_MESSAGE_MAP()
@@ -71,24 +69,9 @@ BOOL AddrBookMerge::InitInstance() {
 
   view()->setFont(_T("Arial"), 12.0);
 
-  options.load();    view()->setOrientation(options.orient);
-
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
   }
 
-
-
-void AddrBookMerge::OnFilePrintSetup() {
-PrtrOrient orient;
-
-  view()->setPrntrOrient(getDevMode());
-
-    CWinApp::OnFilePrintSetup();
-
-  orient = view()->getPrntrOrient(getDevMode());
-
-  options.setOrient(orient);   view()->setOrientation(options.orient);
-  }
 
 
 int AddrBookMerge::ExitInstance() {

@@ -5,7 +5,8 @@
 #include "AddrBookMergeView.h"
 #include "AddrBookMerge.h"
 #include "AddrBookMergeDoc.h"
-#include "Options.h"
+#include "OptionsDlg.h"
+#include "Resource.h"
 #include "Resources.h"
 
 
@@ -14,99 +15,58 @@
 IMPLEMENT_DYNCREATE(AddrBookMergeView, CScrView)
 
 BEGIN_MESSAGE_MAP(AddrBookMergeView, CScrView)
+  ON_COMMAND(ID_Options, &onOptions)
 END_MESSAGE_MAP()
 
 
-AddrBookMergeView::AddrBookMergeView() noexcept :
-                                              dspNote( dMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
+AddrBookMergeView::AddrBookMergeView() noexcept : dspNote(dMgr.getNotePad()), prtNote(pMgr.getNotePad()) {
 ResourceData res;
 String       pn;
   if (res.getProductName(pn)) prtNote.setTitle(pn);
   }
 
 
-BOOL AddrBookMergeView::PreCreateWindow(CREATESTRUCT& cs) {
+BOOL AddrBookMergeView::PreCreateWindow(CREATESTRUCT& cs) {return CScrView::PreCreateWindow(cs);}
 
-  return CScrView::PreCreateWindow(cs);
+
+void AddrBookMergeView::onOptions() {
+OptionsDlg dlg;
+
+  if (printer.name.isEmpty()) printer.load(0);
+
+  if (dlg.DoModal() == IDOK) pMgr.setFontScale(printer.scale);
   }
 
-
-void AddrBookMergeView::OnPrepareDC(CDC* pDC, CPrintInfo* pInfo) {
-uint   x;
-double topMgn   = options.topMargin.stod(x);
-double leftMgn  = options.leftMargin.stod(x);
-double rightMgn = options.rightMargin.stod(x);
-double botMgn   = options.botMargin.stod(x);
-
-  setMgns(leftMgn,  topMgn,  rightMgn, botMgn, pDC);   CScrView::OnPrepareDC(pDC, pInfo);
-  }
 
 
 // Perpare output (i.e. report) then start the output with the call to SCrView
 
-void AddrBookMergeView::onPrepareOutput(bool printing) {
-DataSource ds = doc()->dataSrc();
-
-  if (printing)
-    switch(ds) {
-      case AddrMergSrc:
-      case NotePadSrc : prtNote.print(*this);  break;
-      }
-
-  else
-    switch(ds) {
-      case AddrMergSrc:
-      case NotePadSrc : dspNote.display(*this);  break;
-      }
+void AddrBookMergeView::onBeginPrinting() {prtNote.onBeginPrinting(*this);}
 
 
-  CScrView::onPrepareOutput(printing);
-  }
+void AddrBookMergeView::onDisplayOutput() {dspNote.display(*this);}
 
 
-void AddrBookMergeView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
+void AddrBookMergeView::displayHeader(DevBase& dev) {dspNote.dspHeader(dev);}
 
-  switch(doc()->dataSrc()) {
-    case AddrMergSrc:
-    case NotePadSrc : setOrientation(options.orient); break;    // Setup separate Orientation?
-    }
-  setPrntrOrient(theApp.getDevMode(), pDC);   CScrView::OnBeginPrinting(pDC, pInfo);
-  }
+
+void AddrBookMergeView::displayFooter(DevBase& dev) {dspNote.dspFooter(dev);}
+
+
+void AddrBookMergeView::printHeader(DevBase& dev, int pageNo) {prtNote.prtHeader(dev, pageNo);}
 
 
 // The footer is injected into the printed output, so the output goes directly to the device.
 // The output streaming functions are very similar to NotePad's streaming functions so it should not
 // be a great hardship to construct a footer.
 
-void AddrBookMergeView::printFooter(Device& dev, int pageNo) {
-  switch(doc()->dataSrc()) {
-    case AddrMergSrc:
-    case NotePadSrc : prtNote.footer(dev, pageNo);  break;
-    }
-  }
+void AddrBookMergeView::printFooter(DevBase& dev, int pageNo) {prtNote.prtFooter(dev, pageNo);}
 
 
-
-void AddrBookMergeView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {
-
-  CScrView::OnEndPrinting(pDC, pInfo);
-
-  switch(doc()->dataSrc()) {
-    case AddrMergSrc:
-    case NotePadSrc : break;
-    }
-  }
+void AddrBookMergeView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) { }
 
 
-void AddrBookMergeView::OnSetFocus(CWnd* pOldWnd) {
-
-  CScrView::OnSetFocus(pOldWnd);
-
-  switch(doc()->dataSrc()) {
-    case AddrMergSrc:
-    case NotePadSrc : break;
-    }
-  }
+void AddrBookMergeView::OnSetFocus(CWnd* pOldWnd) {CScrView::OnSetFocus(pOldWnd);}
 
 
 // AddrBookMergeView diagnostics
@@ -116,7 +76,7 @@ void AddrBookMergeView::OnSetFocus(CWnd* pOldWnd) {
 void AddrBookMergeView::AssertValid() const {CScrollView::AssertValid();}
 
 void AddrBookMergeView::Dump(CDumpContext& dc) const {CScrollView::Dump(dc);}
-                                             // non-debug version is inline
+                                                                            // non-debug version is inline
 AddrBookMergeDoc* AddrBookMergeView::GetDocument() const
   {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(AddrBookMergeDoc))); return (AddrBookMergeDoc*)m_pDocument;}
 

@@ -13,9 +13,11 @@
 #define ID_File_New                     400
 #define ID_File_Open                    401
 #define ID_File_Save                    402
-#define ID_Help                         404
-#define ID_Add_Book                     405
-#define ID_Process                      406
+#define ID_Options                      403
+#define ID_App_About                    404
+#define ID_Help                         405
+#define ID_Add_Book                     406
+#define ID_Process                      407
 
 
 // Next default values for new objects
