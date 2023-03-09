@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 3/8/23
+
+Added numbers to notepad archive output.
+
 ### Update 3/7/23
 
 Fixed (hopefully) Print and Print Preview.  See MakeApp for details.

@@ -65,6 +65,8 @@ public:
                                 {NewAlloc(NtManipStg); m.func(*this, m.v); FreeNode(&m); return *this;}
 private:
 
+  void archive(NoteNmbr& nn, TextPosition& tPos, Archive& ar);
+
   void initialize();                          // Must open Notepad before first use.
 
   NotePad& append(const String& line);// {getNote(EndLnNAttr).line += line.str();   return *this;}
