@@ -84,6 +84,18 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 3/13/23
+
+When there are multiple reports the printed output orientation is by report, not the printer.  Thus the
+orientation is associated with the report and the standard Options dialog contains the orientation for the
+NotePad Report.  Other reports will need a way to designate the printer output orietation.
+
+The NotePad output managers have been moved into CScrView so that it is available in all applications
+without further development.  Of course other reports may be written following the pattern of the NotePad
+report.
+
+Some additional bug fixes.
+
 ### Update 3/8/23
 
 Added numbers to notepad archive output.

@@ -171,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Library\Extras\AboutDlg.rc2" />
+    <None Include="C:\Users\rrvt\AppData\Roaming\AddrBookMerge\AddrBookMerge.ini" />
     <None Include="res\AddrBookMerge.rc2" />
     <None Include="..\..\Library\Extras\Options.rc2" />
     <None Include="..\README.md" />

@@ -34,7 +34,13 @@ OptionsDlg dlg;
 
   if (printer.name.isEmpty()) printer.load(0);
 
-  if (dlg.DoModal() == IDOK) pMgr.setFontScale(printer.scale);
+  initNoteOrietn();   dlg.orient = printer.toStg(prtNote.prtrOrietn);
+
+  if (dlg.DoModal() == IDOK) {
+    pMgr.setFontScale(printer.scale);
+
+    prtNote.prtrOrietn = printer.toOrient(dlg.orient);   saveNoteOrietn();
+    }
   }
 
 
