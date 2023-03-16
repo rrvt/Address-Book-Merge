@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 3/15/23
+
+Complete more of orientation to reports.
+
 ### Update 3/13/23
 
 When there are multiple reports the printed output orientation is by report, not the printer.  Thus the

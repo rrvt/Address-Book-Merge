@@ -10,10 +10,6 @@ class AddrBookMergeDoc;
 
 
 class AddrBookMergeView : public CScrView {
-
-NotePadRpt dspNote;
-NotePadRpt prtNote;
-
 protected: // create from serialization only
 
   AddrBookMergeView() noexcept;

@@ -19,7 +19,7 @@ BEGIN_MESSAGE_MAP(AddrBookMergeView, CScrView)
 END_MESSAGE_MAP()
 
 
-AddrBookMergeView::AddrBookMergeView() noexcept : dspNote(dMgr.getNotePad()), prtNote(pMgr.getNotePad()) {
+AddrBookMergeView::AddrBookMergeView() noexcept {
 ResourceData res;
 String       pn;
   if (res.getProductName(pn)) prtNote.setTitle(pn);
