@@ -7,7 +7,7 @@
 #include "AddrBookMerge.h"
 #include "AddrBookMergeView.h"
 #include "CSVrcds.h"
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "filename.h"
 #include "GetPathDlg.h"
 #include "MessageBox.h"

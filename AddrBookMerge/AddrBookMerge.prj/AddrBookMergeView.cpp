@@ -7,7 +7,9 @@
 #include "AddrBookMergeDoc.h"
 #include "OptionsDlg.h"
 #include "Resource.h"
+#include "ResourceExtra.h"
 #include "Resources.h"
+#include "RptOrientDlgOne.h"
 
 
 // AddrBookMergeView
@@ -15,7 +17,8 @@
 IMPLEMENT_DYNCREATE(AddrBookMergeView, CScrView)
 
 BEGIN_MESSAGE_MAP(AddrBookMergeView, CScrView)
-  ON_COMMAND(ID_Options, &onOptions)
+  ON_COMMAND(ID_Options,     &onOptions)
+  ON_COMMAND(ID_Orientation, &onRptOrietn)
 END_MESSAGE_MAP()
 
 
@@ -34,13 +37,18 @@ OptionsDlg dlg;
 
   if (printer.name.isEmpty()) printer.load(0);
 
-  initNoteOrietn();   dlg.orient = printer.toStg(prtNote.prtrOrietn);
+  if (dlg.DoModal() == IDOK) pMgr.setFontScale(printer.scale);
+  }
 
-  if (dlg.DoModal() == IDOK) {
-    pMgr.setFontScale(printer.scale);
 
-    prtNote.prtrOrietn = printer.toOrient(dlg.orient);   saveNoteOrietn();
-    }
+void AddrBookMergeView::onRptOrietn() {
+RptOrietnDlg dlg;
+
+  dlg.lbl00 = _T("Media:");
+
+  dlg.ntpd = printer.toStg(prtNote.prtrOrietn);
+
+  if (dlg.DoModal() == IDOK) {prtNote.prtrOrietn = printer.toOrient(dlg.ntpd);   saveNoteOrietn();}
   }
 
 

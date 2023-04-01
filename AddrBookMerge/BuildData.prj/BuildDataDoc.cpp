@@ -5,13 +5,13 @@
 #include "BuildDataDoc.h"
 #include "BuildData.h"
 #include "BuildDataView.h"
-#include "ExtraResource.h"
 #include "filename.h"
 #include "GetPathDlg.h"
 #include "MessageBox.h"
 #include "NotePad.h"
 #include "OptionsDlg.h"
 #include "Resource.h"
+#include "ResourceExtra.h"
 #include "ToolBar.h"
 
 

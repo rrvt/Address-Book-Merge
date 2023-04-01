@@ -3,9 +3,6 @@
 // Used by BuildData.rc
 
 
-#include "ExtraResource.h"
-
-
 #define IDR_MAINFRAME                   100
 #define IDR_ToolBarImages               101
 #define IDR_PopupMenu                   102

@@ -8,6 +8,7 @@
 #include "OptionsDlg.h"
 #include "Resource.h"
 #include "Resources.h"
+#include "RptOrientDlgOne.h"
 
 
 // BuildDataView
@@ -16,10 +17,11 @@ IMPLEMENT_DYNCREATE(BuildDataView, CScrView)
 
 BEGIN_MESSAGE_MAP(BuildDataView, CScrView)
   ON_COMMAND(ID_Options, &onOptions)
+  ON_COMMAND(ID_Orientation, &onRptOrietn)
 END_MESSAGE_MAP()
 
 
-BuildDataView::BuildDataView() noexcept : dspNote( dMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
+BuildDataView::BuildDataView() noexcept {
 ResourceData res;
 String       pn;
   if (res.getProductName(pn)) prtNote.setTitle(pn);
@@ -38,6 +40,17 @@ OptionsDlg dlg;
   if (printer.name.isEmpty()) printer.load(0);
 
   if (dlg.DoModal() == IDOK) pMgr.setFontScale(printer.scale);
+  }
+
+
+void BuildDataView::onRptOrietn() {
+RptOrietnDlg dlg;
+
+  dlg.lbl00 = _T("Media:");
+
+  dlg.ntpd = printer.toStg(prtNote.prtrOrietn);
+
+  if (dlg.DoModal() == IDOK) {prtNote.prtrOrietn = printer.toOrient(dlg.ntpd);   saveNoteOrietn();}
   }
 
 

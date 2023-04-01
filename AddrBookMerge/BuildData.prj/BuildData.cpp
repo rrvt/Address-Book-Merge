@@ -4,13 +4,13 @@
 #include "stdafx.h"
 #include "BuildData.h"
 #include "AboutDlg.h"
-#include "ExtraResource.h"
+#include "BuildDataDoc.h"
+#include "BuildDataView.h"
 #include "IniFile.h"
 #include "MainFrame.h"
 #include "NotePad.h"
 #include "OptionsDlg.h"
-#include "BuildDataDoc.h"
-#include "BuildDataView.h"
+#include "ResourceExtra.h"
 
 
 BuildData theApp;                       // The one and only BuildData object

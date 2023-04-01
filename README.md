@@ -84,9 +84,13 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 3/31/23
+
+Added report orientation to both applications.
+
 ### Update 3/15/23
 
-Complete more of orientation to reports.
+Complete move of orientation to reports.
 
 ### Update 3/13/23
 
