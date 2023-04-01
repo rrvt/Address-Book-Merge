@@ -177,7 +177,6 @@
     <None Include="res\AddrBookMerge.rc2" />
     <None Include="..\..\Library\Extras\Options.rc2" />
     <None Include="..\README.md" />
-    <None Include="res\Toolbar.bmp" />
     <None Include="..\..\Library\Extras\RptOrientOne.rc2" />
   </ItemGroup>
   <ItemGroup>
