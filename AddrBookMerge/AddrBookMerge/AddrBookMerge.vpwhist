@@ -7,10 +7,10 @@
 ..\BuildData.hlp\BuildData.hlp.vcxproj=20220214075331494
 [Global]
 CurrentProject=..\AddrBookMerge.prj\AddrBookMerge.vpj
-ActiveSolutionConfig=Debug|Win32
+ActiveSolutionConfig=Release|Win32
 [ActiveConfig]
 ..\AddrBookMerge.hlp\AddrBookMergeHelp.vpj=
-..\AddrBookMerge.prj\AddrBookMerge.vpj=,Debug|Win32
+..\AddrBookMerge.prj\AddrBookMerge.vpj=,Release|Win32
 ..\..\Library\Library.prj\Library.vpj=,Debug|Win32
 ..\BuildData.prj\BuildData.vpj=,Debug|Win32
 ..\BuildData.hlp\BuildDataHelp.vpj=,Debug|Win32
