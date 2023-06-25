@@ -4,8 +4,8 @@ exported to CSV files.
 It does a little more than that:
 
   - It removes entries with no discernable eMail Address
-  - It removes entries with eMail addresses that beging with four digits, i.e.
-  - It removes entries that will not respone
+  - It removes entries with eMail addresses that begin with four digits
+  - It removes entries that will not respond
   - It removes entries that are very long
   - It tries to fix entries where the eMail address is not in the eMail field
   - It attempts to fix names with things like "Smith, Jr." which were not enclosed in quotes so the
@@ -83,6 +83,10 @@ I started this project many years ago when I noticed a some duplication in the a
 Thunderbird's function did not work.
 
 ## Update
+
+### Update 6/25/23
+
+Library modifications and added one additional verification feature.
 
 ### Update 3/31/23
 

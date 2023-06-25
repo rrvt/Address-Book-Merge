@@ -84,9 +84,9 @@ Thunderbird's function did not work.
 
 ## Update
 
-### Update 6/21/23
+### Update 6/25/23
 
-Library modifications.
+Library modifications and added one additional verification feature.
 
 ### Update 3/31/23
 

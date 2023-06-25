@@ -89,7 +89,25 @@ String& screen = rcd.Screen_Name;
   }
 
 
-bool AddrBook::validateEmail(String& fld) {int x = fld.find(_T('@')); return 0 < x && x <= 45;}
+bool AddrBook::validateEmail(String& fld) {
+int x;
+
+  if (!fld.length()) return false;
+
+  x = fld.find(_T('@'));   if (x < 0 || 45 <= x) return false;
+
+  x = fld.find(_T(','));
+
+  if (x >= 0) {
+    String prefix = fld.substr(0, x);
+
+    fld = prefix + fld.substr(x+1);
+
+    fld.trim();   return validateEmail(fld);
+    }
+
+  return true;
+  }
 
 
 static RegExpr junior(_T(".*Jr.*"));
