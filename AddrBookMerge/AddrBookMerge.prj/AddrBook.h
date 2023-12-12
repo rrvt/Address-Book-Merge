@@ -5,16 +5,14 @@
 #include "Addr.h"
 
 
-
 class  AddrBook;
-typedef DatumPtrT<AddrRcd> AddrRcdP;
-typedef IterT<AddrBook, AddrRcd> ABIter;
-
+typedef DatumPtrT<AddrRcd, String>  AddrRcdP;
+typedef IterT<AddrBook, AddrRcd>    ABIter;
 
 
 class AddrBook {
 
-ExpandableP<AddrRcd, AddrRcdP, 2> data;
+ExpandableP<AddrRcd, String, AddrRcdP, 2> data;
 
 AddrRcd header;
 
