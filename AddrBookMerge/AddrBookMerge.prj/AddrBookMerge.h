@@ -35,7 +35,7 @@ public:
 
 extern AddrBookMerge theApp;
 
-inline void         invalidate() {theApp.invalidate();}
-inline AddrBookMergeDoc*  doc()  {return theApp.doc();}
-inline AddrBookMergeView* view() {return theApp.view();}
+inline void               invalidate() {theApp.invalidate();}
+inline AddrBookMergeDoc*  doc()        {return theApp.doc();}
+inline AddrBookMergeView* view()       {return theApp.view();}
 

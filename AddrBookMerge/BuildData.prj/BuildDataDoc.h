@@ -5,8 +5,6 @@
 #include "CDoc.h"
 #include "CodeBldr.h"
 #include "MainFrame.h"
-#include "TBComboBox.h"
-#include "TBEditBox.h"
 
 
 enum DataSource {NilSrc, NotePadSrc, AddrSrc, HeaderSrc, BodySrc};

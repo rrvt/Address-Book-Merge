@@ -13,7 +13,7 @@
 #include "MessageBox.h"
 #include "NotePad.h"
 #include "Resource.h"
-#include "ToolBar.h"
+#include "MyToolBar.h"
 
 
 // AddrBookMergeDoc

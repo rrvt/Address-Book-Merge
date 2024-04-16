@@ -42,19 +42,17 @@ int MainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 
   if (CFrameWndEx::OnCreate(lpCreateStruct) == -1) return -1;
 
-  if (!m_wndMenuBar.Create(this)) {TRACE0("Failed to create menubar\n"); return -1;}
+  if (!menuBar.Create(this)) {TRACE0("Failed to create menubar\n"); return -1;}
+
   CMFCPopupMenu::SetForceMenuFocus(FALSE);
 
-  if (!toolBar.CreateEx(this, TBSTYLE_FLAT,
-                                        WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_TOOLTIPS | CBRS_FLYBY) ||
-      !toolBar.LoadToolBar(IDR_MAINFRAME, 0, 0, TRUE)) {TRACE0("Failed to create toolbar\n"); return -1;}
+  if (!toolBar.create(this, IDR_MAINFRAME)) {TRACE0("Failed to create status bar\n"); return -1;}
 
-  if (!m_wndStatusBar.Create(this)) {TRACE0("Failed to create status bar\n"); return -1;}
+  if (!statusBar.Create(this)) {TRACE0("Failed to create status bar\n"); return -1;}
 
-  m_wndStatusBar.SetIndicators(indicators, noElements(indicators));  //sizeof(indicators)/sizeof(UINT)
+  statusBar.SetIndicators(indicators, noElements(indicators));  //sizeof(indicators)/sizeof(UINT)
 
-  DockPane(&m_wndMenuBar);
-  DockPane(&toolBar);
+  DockPane(&menuBar);   DockPane(&toolBar);
 
   CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows7));
                                                                          // Affects look of toolbar, etc.
@@ -73,17 +71,7 @@ void MainFrame::setupToolBar() { }
 // MainFrame diagnostics
 
 #ifdef _DEBUG
-void MainFrame::AssertValid() const
-{
-  CFrameWndEx::AssertValid();
-}
-
-void MainFrame::Dump(CDumpContext& dc) const
-{
-  CFrameWndEx::Dump(dc);
-}
+void MainFrame::AssertValid() const          {CFrameWndEx::AssertValid();}
+void MainFrame::Dump(CDumpContext& dc) const {CFrameWndEx::Dump(dc);}
 #endif //_DEBUG
-
-
-// MainFrame message handlers
 
