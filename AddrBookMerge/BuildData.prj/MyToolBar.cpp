@@ -178,6 +178,15 @@ int cbxID = cboBx.getId();
   }
 
 
+void MyToolBar::setHeight( uint id) {
+#ifdef ButtonDefs
+int cbxID = cboBx.getId();
+
+  if (id == cbxID) ToolBarBase::setHeight(cboBx);
+#endif
+  }
+
+
 #ifdef DocViewTB
 
 bool MyToolBar::getCurSel( uint id, String& s, int& data) {

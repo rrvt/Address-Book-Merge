@@ -80,11 +80,12 @@ public:
 
   bool    addCBx(    uint id);
   bool    addCBx(    uint id, int     idr, TCchar* caption);
-  bool    addCbxItem(uint id, TCchar* txt, int data);
+  bool    addCbxItem(uint id, TCchar* txt, int data = 0);
   bool    addCBx(    uint id, CbxItem cbxItem[], int n, TCchar* caption);
-  bool    addCbxItemSorted(uint id, TCchar* txt, int data);
+  bool    addCbxItemSorted(uint id, TCchar* txt, int data = 0);
   void    setCaption(uint id, TCchar* caption);
-  void    setWidth(uint id);
+  void    setWidth(  uint id);
+  void    setHeight( uint id);
   bool    getCurSel( uint id, String& s, int& data);
   };
 

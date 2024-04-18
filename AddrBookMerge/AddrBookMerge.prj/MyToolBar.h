@@ -3,20 +3,6 @@
 
 #pragma once
 
-//#define ButtonDefs
-//#define DocViewTB
-
-
-#ifdef ButtonDefs
-#include "TBButton.h"
-#include "TBEditBox.h"
-#ifdef DocViewTB
-#include "TBMenu.h"
-#else
-#include "TBCbxMenu.h"
-#endif
-#include "TBCboBx.h"
-#endif
 #include "ToolBarBase.h"
 
 
@@ -24,36 +10,6 @@ struct CbxItem;
 
 
 class MyToolBar : public ToolBarBase {
-
-#ifdef ButtonDefs
-
-TBButton  button;
-TBEditBox editBox;
-
-#ifdef DocViewTB
-
-TBMenu    menu;
-TBMenu    menu1;
-
-#else
-
-TBCbxMenu cbxMenu;
-TBCbxMenu cbxMenu1;
-
-#endif
-
-TBCboBx   cboBx;
-
-#ifdef DocViewTB
-
-TBMenu    saveMenu;
-
-#else
-
-TBCboBx   cboBx1;
-
-#endif
-#endif
 
 public:
 

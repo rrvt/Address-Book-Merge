@@ -4,6 +4,7 @@
 #pragma once
 #include "CMainFrm.h"
 #include "MyToolBar.h"
+#include "WinPos.h"
 
 
 class MainFrame : public CMainFrm {
@@ -14,10 +15,11 @@ CMFCStatusBar statusBar;
 CMenu         menu;
 CMenu         menu2;
 
+bool          isInitialized;
+
 protected:                                          // create from serialization only
 
   MainFrame() noexcept;
-
 
   DECLARE_DYNCREATE(MainFrame)
 
@@ -25,11 +27,9 @@ public:                                             // Overrides
 
   virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
-  virtual   ~MainFrame();
+  virtual     ~MainFrame();
 
-  void       setupToolBar();
-
-  MyToolBar& getToolBar() {return toolBar;}
+  MyToolBar&   getToolBar() {return toolBar;}
 
 #ifdef _DEBUG
   virtual void AssertValid() const;
@@ -40,8 +40,17 @@ protected:                                          // Generated message map fun
 
   DECLARE_MESSAGE_MAP()
 
-  afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+  afx_msg int     OnCreate(LPCREATESTRUCT lpCreateStruct);
   afx_msg LRESULT OnResetToolBar(WPARAM wParam, LPARAM lParam);
+
+private:
+
+  void            setupToolBar();
+
+public:
+
+  afx_msg void    OnMove(int x, int y);
+  afx_msg void    OnSize(UINT nType, int cx, int cy);
   };
 
 

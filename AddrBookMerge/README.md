@@ -84,7 +84,7 @@ Thunderbird's function did not work.
 
 ## Update
 
-### Update 4/17/24
+### Update 4/17/24 & 4/18/24
 
 Improved the way Toolbars and Window Position and size are handled.
 
