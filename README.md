@@ -84,6 +84,14 @@ Thunderbird's function did not work.
 
 ## Update
 
+#update 6/13/24
+
+Fix WinPos.
+
+### Update 5/15/24
+
+Add MyToolBar class to deal with the differences between Doc/View and Dialog Box Toolbars.
+
 ### Update 4/17/24 & 4/18/24
 
 Improved the way Toolbars and Window Position and size are handled.
