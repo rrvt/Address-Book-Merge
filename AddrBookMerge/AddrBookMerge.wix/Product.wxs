@@ -29,6 +29,8 @@
                         SourceFile="$(var.SolutionDir)..\AddrBookMerge.prj\res\AddrBookMerge.ico"/>
   <Icon     Id="UninstallIcon.ico"
                             SourceFile="$(var.SolutionDir)..\AddrBookMerge.prj\res\Uninstall.ico"/>
+  <Icon     Id="MITLicense_Icon.exe"
+                              SourceFile="$(var.SolutionDir)..\..\Library\License\MITLicense.ico"/>
   <Property Id="ARPPRODUCTICON"  Value="UninstallIcon.ico" />
 
   <Feature Id="ProductFeatures" Title="Main Product" Level="1" >
@@ -44,7 +46,7 @@
     <ComponentRef Id="Help.cmp"/>
   </ComponentGroup>
   <ComponentGroup Id="License.rtf.ftr">
-    <ComponentRef Id="License.cmp"/>
+    <ComponentRef Id="MITLicense.rtf.cmp"/>
   </ComponentGroup>
   <ComponentGroup Id="Uninstall_Addr_Book_Merge.ftr">
     <ComponentRef Id="Uninstall_Addr_Book_Merge.cmp"/>
@@ -106,24 +108,25 @@
 </Fragment>
 
 <Fragment>
-  <Component Id="License.cmp" Guid="B85281D1-E902-4794-AEE7-9A710DF2539F"
+  <Component Id="MITLicense.rtf.cmp" Guid="B85281D1-E902-4794-AEE7-9A710DF2539F"
                                                              Directory="AddrBookMerge_License.pff">
-    <File Id="License.cmp"
+    <File Id="MITLicense.rtf.cmp"
                 Source="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" KeyPath="yes"/>
 
-    <Shortcut Id               = "License.shc"
-              Name             = "License"
+    <Shortcut Id               = "MITLicense.rtf.shc"
+              Name             = "MITLicense.rtf"
               Description      = "My License"
               Advertise        = "yes"
               Directory        = "Addr_Book_Merge.pmf"
               WorkingDirectory = "AddrBookMerge_License.pff"
+              Icon             = "MITLicense_Icon.exe"
               />
   </Component>
 </Fragment>
 
 <Fragment>
   <Component Id="Uninstall_Addr_Book_Merge.cmp"
-                       Guid="57B47721-5A03-4F19-AFD3-C73533AF7F7B" Directory="Addr_Book_Merge.pmf">
+                       Guid="96240F1C-DB91-4DD5-9B6F-52F5869AC923" Directory="Addr_Book_Merge.pmf">
 
     <Shortcut Id               = "UninstallAddrBookMerge.shc"
               Name             = "Uninstall Addr Book Merge"

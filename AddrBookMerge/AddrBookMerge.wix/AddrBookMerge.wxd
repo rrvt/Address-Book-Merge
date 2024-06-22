@@ -6,13 +6,13 @@ Version=2.100000
 [DefaultPath]
 NPaths=3
 DefKey0=Icon
-Icon.Path=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\
+Icon.Path=D:\Sources\Library\License\
 DefKey1=License.rtf.ftr
 License.rtf.ftr.Path=D:\Sources\Library\License\
 DefKey2=License
 License.Path=D:\Sources\Library\License\
 [Icons]
-NoIcons=2
+NoIcons=3
 [Icon00]
 IconID=AddrBookMerge
 WixID=AddrBookMergeIcon.ico
@@ -21,11 +21,15 @@ IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\AddrBookMerge.ico
 IconID=Uninstall
 WixID=UninstallIcon.ico
 IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\Uninstall.ico
+[Icon02]
+IconID=MITLicense
+WixID=MITLicense_Icon.exe
+IconPath=D:\Sources\Library\License\MITLicense.ico
 [Product]
 ProductName=AddrBookMerge
 Company=Bob -- K6RWY
 WixName=AddrBookMerge
-WixVersion=1.2.1.0
+WixVersion=1.2.3.0
 UpgradeCode=6EB874C4-FE5E-413F-9594-C951E8B89DBA
 SaveVerAllowed=0
 LicenseRequired=1
@@ -79,11 +83,12 @@ Guid=98AB4B44-698A-4649-8BEC-B38A3E3C42F6
 FeatureID=License.rtf
 ProgramID=AddrBookMerge\License
 StartMenuID=Addr Book Merge
-CurSel=License
+CurSel=MITLicense.rtf
 NoComponents=1
 [Ftr01Cmp00]
-ID=License
+ID=MITLicense.rtf
 Path=D:\Sources\Library\License\MITLicenseFile.rtf
 Guid=B85281D1-E902-4794-AEE7-9A710DF2539F
 Description=My License
+IconID=MITLicense
 IsStartMenu=1

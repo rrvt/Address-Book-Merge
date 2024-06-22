@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 6/22/24
+
+Added an icon to the MIT License rtf file.
+
 ### Update 6/21/24
 
 Added the MIT License to the installer and the Start Menu Folder.
