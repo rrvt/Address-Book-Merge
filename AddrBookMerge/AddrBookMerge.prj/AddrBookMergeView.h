@@ -54,6 +54,6 @@ public:
 
 #ifndef _DEBUG  // debug version in AddrBookMergeView.cpp
 inline AddrBookMergeDoc* AddrBookMergeView::GetDocument() const
-                                                {return reinterpret_cast<AddrBookMergeDoc*>(m_pDocument);}
+                                         {return reinterpret_cast<AddrBookMergeDoc*>(m_pDocument);}
 #endif
 

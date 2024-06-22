@@ -105,14 +105,7 @@ void BuildDataDoc::serialize(Archive& ar) {
 // BuildDataDoc diagnostics
 
 #ifdef _DEBUG
-void BuildDataDoc::AssertValid() const
-{
-  CDocument::AssertValid();
-}
-
-void BuildDataDoc::Dump(CDumpContext& dc) const
-{
-  CDocument::Dump(dc);
-}
+void BuildDataDoc::AssertValid() const          {CDocument::AssertValid();}
+void BuildDataDoc::Dump(CDumpContext& dc) const {CDocument::Dump(dc);}
 #endif //_DEBUG
 

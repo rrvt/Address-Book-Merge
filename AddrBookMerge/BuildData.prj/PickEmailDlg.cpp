@@ -40,5 +40,3 @@ void PickEmailDlg::DoDataExchange(CDataExchange* pDX) {
 BEGIN_MESSAGE_MAP(PickEmailDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-
-// PickEmailDlg message handlers

@@ -30,8 +30,8 @@ END_MESSAGE_MAP()
 
 // AddrBookMergeDoc construction/destruction
 
-AddrBookMergeDoc::AddrBookMergeDoc() noexcept : dataSource(NotePadSrc),
-                                                   pathDsc{_T("CSV File"), 0, _T("csv"), _T("*.csv")} { }
+AddrBookMergeDoc::AddrBookMergeDoc() noexcept :
+                    dataSource(NotePadSrc), pathDsc{_T("CSV File"), 0, _T("csv"), _T("*.csv")} { }
 
 AddrBookMergeDoc::~AddrBookMergeDoc() { }
 
@@ -72,8 +72,7 @@ String s;
 
 
 void AddrBookMergeDoc::OnProcess()
-                                {addrBook.onProcess();   addrBook.dspRecords();   display(AddrMergSrc);}
-
+                          {addrBook.onProcess();   addrBook.dspRecords();   display(AddrMergSrc);}
 
 
 void AddrBookMergeDoc::display(DataSource ds) {dataSource = ds; invalidate();}
@@ -107,30 +106,9 @@ void AddrBookMergeDoc::serialize(Archive& ar) {
 // AddrBookMergeDoc diagnostics
 
 #ifdef _DEBUG
-void AddrBookMergeDoc::AssertValid() const {CDocument::AssertValid();}
-
+void AddrBookMergeDoc::AssertValid() const          {CDocument::AssertValid();}
 void AddrBookMergeDoc::Dump(CDumpContext& dc) const {CDocument::Dump(dc);}
 #endif //_DEBUG
-
-
-
-
-
-#if 0
-void AddrBookMergeDoc::OnAddBook() {
-String path;
-String s;
-
-  notePad.clear();   dataSource = AddrMergSrc;
-
-  if (getPathDlg(_T("CSV File"), 0, _T("csv"), _T("*.csv"), path)) OnOpenDocument(path);
-
-  s.format(_T("\nNumber of Address Records: %i"), csvRcds.count());    notePad << s << nCrlf << nCrlf;
-
-  csvRcds.display(notePad);
-  invalidate();
-  }
-#endif
 
 
 

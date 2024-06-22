@@ -8,7 +8,6 @@
 #include "PickEmailDlg.h"
 
 
-
 CodeBldr codeBldr;
 
 
@@ -89,8 +88,8 @@ CSVfld*  d;
   prepComparison(_T(">="));
   prepComparison(_T("<="));  notePad << nCrlf;
 
-  notePad << _T("// returns either a pointer to data (or datum) at index i in array or zero") << nCrlf;
-  notePad << nCrlf;
+  notePad << _T("// returns either a pointer to data (or datum) at index i in array or zero");
+  notePad << nCrlf << nCrlf;
 
   notePad << _T("  String* datum(int i) {return 0 <= i && i < nData() ? getFld(i) : 0;}") << nCrlf;
   notePad << _T("  String& getEmail()   {return *datum(eMailX);}") << nCrlf << nCrlf;
@@ -128,7 +127,8 @@ void CodeBldr::prepAddrIter() {
   notePad << _T("  enum Dir {Fwd, Rev};") << nCrlf << nCrlf;
 
   notePad << _T("  ARIter(AddrRcd& addrRcd) : rcd(addrRcd) { }") << nCrlf;
-  notePad << _T("  ARIter(ARIter& iter)     : iterX(iter.iterX), rcd(iter.rcd) { }") << nCrlf << nCrlf;
+  notePad << _T("  ARIter(ARIter& iter)     : iterX(iter.iterX), rcd(iter.rcd) { }");
+  notePad << nCrlf << nCrlf;
 
   notePad << _T("  String* operator() (Dir rev = Fwd) {iterX = rev ? rcd.nData() : 0;");
   notePad << _T(" return rev ? decr() : current();}") << nCrlf;
@@ -137,17 +137,20 @@ void CodeBldr::prepAddrIter() {
   notePad << _T("  String* operator-- (int)           {return iterX > 0           ? decr() : 0;}");
   notePad << nCrlf << nCrlf;
 
-  notePad << _T("  String* current()                  {return rcd.getFld(iterX);}") << nCrlf << nCrlf;
+  notePad << _T("  String* current()                  {return rcd.getFld(iterX);}");
+  notePad << nCrlf << nCrlf;
 
   notePad << _T("  ARIter& operator= (ARIter& iter)   {iterX = iter.iterX; rcd = iter.rcd;}");
   notePad << nCrlf << nCrlf;
 
-  notePad << _T("  bool  isLast()                     {return iterX + 1 == rcd.nData();}") << nCrlf;
+  notePad << _T("  bool  isLast()                     {return iterX + 1 == rcd.nData();}");
+  notePad << nCrlf;
   notePad << _T("  bool  isFirst()                    {return iterX <= 0;}") << nCrlf << nCrlf;
 
   notePad << _T("private:") << nCrlf << nCrlf;
 
-  notePad << _T("  String* incr() {return iterX < rcd.nData() ? rcd.datum(++iterX) : 0;}") << nCrlf;
+  notePad << _T("  String* incr() {return iterX < rcd.nData() ? rcd.datum(++iterX) : 0;}");
+  notePad << nCrlf;
   notePad << _T("  String* decr() {return iterX > 0           ? rcd.datum(--iterX) : 0;}");
   notePad << nCrlf << nCrlf;
 
@@ -188,17 +191,6 @@ String   s;
   prepNData();
   }
 
-
-#if 0
-
-
-  notepad << _T("") << nCrlf;
-
-  for (fld = iter(), i = 0; fld; fld = iter++, i++)
-                                       {String& p = removeQuotes(fld->name);   p.trim();   setFld(i, p);}
-  return *this;
-  }
-#endif
 
 void CodeBldr::prepOpAssn() {
 

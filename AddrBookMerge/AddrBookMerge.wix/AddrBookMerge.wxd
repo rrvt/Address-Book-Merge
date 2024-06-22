@@ -1,13 +1,16 @@
 [SolutionInfo]
+RootPath=D:\Sources\AddrBookMerge
 Path=D:\Sources\AddrBookMerge\AddrBookMerge\AddrBookMerge.sln
 Name=AddrBookMerge
-Version=2.0
+Version=2.100000
 [DefaultPath]
-NPaths=2
-DefKey0=AddrBookMerge.ftr
-AddrBookMerge.ftr.Path=D:\Sources\AddrBookMerge\AddrBookMerge\
-DefKey1=Icon
+NPaths=3
+DefKey0=Icon
 Icon.Path=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\
+DefKey1=License.rtf.ftr
+License.rtf.ftr.Path=D:\Sources\Library\License\
+DefKey2=License
+License.Path=D:\Sources\Library\License\
 [Icons]
 NoIcons=2
 [Icon00]
@@ -22,32 +25,37 @@ IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\Uninstall.ico
 ProductName=AddrBookMerge
 Company=Bob -- K6RWY
 WixName=AddrBookMerge
-WixVersion=1.0.9.0
-UpgradeGUID=6EB874C4-FE5E-413F-9594-C951E8B89DBA
+WixVersion=1.2.1.0
 UpgradeCode=6EB874C4-FE5E-413F-9594-C951E8B89DBA
 SaveVerAllowed=0
-LicenseRequired=0
-LicensePath=D:\Sources\AddrBookMerge\AddrBookMerge\
+LicenseRequired=1
+LicensePath=D:\Sources\Library\License\MITLicenseFile.rtf
 IconID=Uninstall
 [PFFDirectories]
-NoDirectories=1
+NoDirectories=2
 [PFFDirDesc00]
 ID=AddrBookMerge
-WixID=AddrBookMerge.pff
+WixID=ADDRBOOKMERGE.PFF
 Parent=
 Name=AddrBookMerge
+HasChildren=1
+[PFFDirDesc01]
+ID=AddrBookMerge\License
+WixID=AddrBookMerge_License.pff
+Parent=AddrBookMerge
+Name=License
 HasChildren=0
 [PMFDirectories]
 NoDirectories=1
 [PMFDirDesc00]
 ID=Addr Book Merge
-WixID=AddrBookMerge.pmf
+WixID=Addr_Book_Merge.pmf
 Parent=
 Name=Addr Book Merge
 HasChildren=0
 [Features]
-Count=1
-CurSel=Addr Book Merge
+Count=2
+CurSel=License.rtf
 [Ftr00]
 FeatureID=Addr Book Merge
 ProgramID=AddrBookMerge
@@ -67,3 +75,15 @@ IsVersionAvail=1
 ID=Help
 Path=D:\Sources\AddrBookMerge\Release\AddrBookMerge.chm
 Guid=98AB4B44-698A-4649-8BEC-B38A3E3C42F6
+[Ftr01]
+FeatureID=License.rtf
+ProgramID=AddrBookMerge\License
+StartMenuID=Addr Book Merge
+CurSel=License
+NoComponents=1
+[Ftr01Cmp00]
+ID=License
+Path=D:\Sources\Library\License\MITLicenseFile.rtf
+Guid=B85281D1-E902-4794-AEE7-9A710DF2539F
+Description=My License
+IsStartMenu=1

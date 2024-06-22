@@ -112,8 +112,6 @@ uint cbxId1 = cbxMenu1.getId();
 #endif
 
 
-
-
 bool MyToolBar::addCBx(uint id) {
 #ifdef ButtonDefs
   return add(cboBx,  id, 10);

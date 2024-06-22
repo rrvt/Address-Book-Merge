@@ -53,7 +53,7 @@ public:
   String*   get(int i) {CSVfld* f = datum(i);  return f ? f->get() : 0;}
 
 private:
-                                       //CSVfld* d = fields[fields.end()].p = fields.allocate(); d->
+
   virtual void    put(TCchar* s) {fields.nextData().put(s);}
 
   virtual String* get() {CSVfld* f = fields[getI].p; return f ? f->get() : 0;}
@@ -64,7 +64,7 @@ private:
 
   CSVfld* datum(int i) {return 0 <= i && i < nData() ? fields[i].p : 0;}       // or data[i].p
 
-  int     nData()      {return fields.end();}                    // returns number of data items in array
+  int     nData()      {return fields.end();}             // returns number of data items in array
 
   friend typename CFldIter;
   };

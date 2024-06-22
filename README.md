@@ -84,7 +84,11 @@ Thunderbird's function did not work.
 
 ## Update
 
-#update 6/13/24
+### Update 6/21/24
+
+Added the MIT License to the installer and the Start Menu Folder.
+
+###update 6/13/24
 
 Fix WinPos.
 

@@ -71,8 +71,8 @@ void AddrBookMergeView::printHeader(DevBase& dev, int pageNo) {prtNote.prtHeader
 
 
 // The footer is injected into the printed output, so the output goes directly to the device.
-// The output streaming functions are very similar to NotePad's streaming functions so it should not
-// be a great hardship to construct a footer.
+// The output streaming functions are very similar to NotePad's streaming functions so it should
+// not be a great hardship to construct a footer.
 
 void AddrBookMergeView::printFooter(DevBase& dev, int pageNo) {prtNote.prtFooter(dev, pageNo);}
 
@@ -86,12 +86,11 @@ void AddrBookMergeView::OnSetFocus(CWnd* pOldWnd) {CScrView::OnSetFocus(pOldWnd)
 // AddrBookMergeView diagnostics
 
 #ifdef _DEBUG
-
-void AddrBookMergeView::AssertValid() const {CScrollView::AssertValid();}
-
+void AddrBookMergeView::AssertValid() const          {CScrollView::AssertValid();}
 void AddrBookMergeView::Dump(CDumpContext& dc) const {CScrollView::Dump(dc);}
-                                                                            // non-debug version is inline
-AddrBookMergeDoc* AddrBookMergeView::GetDocument() const
-  {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(AddrBookMergeDoc))); return (AddrBookMergeDoc*)m_pDocument;}
-
+                                                                    // non-debug version is inline
+AddrBookMergeDoc* AddrBookMergeView::GetDocument() const {
+  ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(AddrBookMergeDoc)));
+  return (AddrBookMergeDoc*)m_pDocument;
+  }
 #endif //_DEBUG

@@ -51,6 +51,6 @@ public:
 
 #ifndef _DEBUG  // debug version in BuildDataView.cpp
 inline BuildDataDoc* BuildDataView::GetDocument() const
-                                                    {return reinterpret_cast<BuildDataDoc*>(m_pDocument);}
+                                            {return reinterpret_cast<BuildDataDoc*>(m_pDocument);}
 #endif
 

@@ -55,8 +55,6 @@ BOOL BuildData::InitInstance() {
 
   AddDocTemplate(pDocTemplate);
 
-//  EnableShellOpen(); RegisterShellFileTypes(TRUE);       // Enable DDE Execute open
-
   // Parse command line for standard shell commands, DDE, file open
 
   CCommandLineInfo cmdInfo;   ParseCommandLine(cmdInfo);
@@ -72,10 +70,6 @@ BOOL BuildData::InitInstance() {
 
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
   }
-
-
-
-//void BuildData::OnFilePrintSetup() {view()->setPrntrOrient(getDevMode());   CWinApp::OnFilePrintSetup();}
 
 
 int BuildData::ExitInstance() {

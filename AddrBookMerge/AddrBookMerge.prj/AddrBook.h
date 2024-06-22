@@ -27,7 +27,7 @@ public:
 
   void dataOut(Archive& ar);
 
-  int      nData()      {return data.end();}                     // returns number of data items in array
+  int      nData()      {return data.end();}              // returns number of data items in array
 
 private:
 
@@ -50,7 +50,7 @@ private:
 
   bool     isTroublesomeEmail(String& eMail);
   bool     displIsEmail(AddrRcd& rcd);
-  String*  getFldRcd();                                    // Specifies Record, gets field
+  String*  getFldRcd();                                   // Specifies Record, gets field
 
   // returns either a pointer to data (or datum) at index i in array or zero
 
@@ -65,32 +65,6 @@ private:
 
 
 extern AddrBook addrBook;
-
-
-
-
-//  void     delRcd(int x);
-
-//  AddrRcd* allocateRcd() {NewAlloc(AddrRcd); return rcds[rcdX].p = AllocNode;}
-
-//  AddrRcd* firstNewRcd() {rcdX = 0; fldX = 0; return rcdX < rcds.end() ? rcds[rcdX].p : allocateRcd();}
-//  AddrRcd* nextNewRcd() { rcdX++;   fldX = 0; return rcdX < rcds.end() ? rcds[rcdX].p : allocateRcd();}
-//int                               fldX;    : fldX(0)
-
-
-
-#if 0
-struct AddrRcdP {
-AddrRcd* p;
-
-  AddrRcdP() : p(0) {}
-  AddrRcdP(AddrRcdP& rcd) {p = rcd.p;}
- ~AddrRcdP() {p = 0;}
-
-  AddrRcdP& operator= (AddrRcdP& q) {p = q.p; return *this;}
-  };
-#endif
-
 
 
 

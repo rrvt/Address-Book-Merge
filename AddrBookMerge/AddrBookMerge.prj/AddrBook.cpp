@@ -370,12 +370,3 @@ AddrRcd* rcd;
   }
 
 
-
-#if 0
-void AddrBook::sort() {
-int last = rcds.end()-1;
-
-  qsort(&rcds[0], &rcds[last]);
-  }
-#endif
-
