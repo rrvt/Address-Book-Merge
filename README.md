@@ -54,8 +54,8 @@ intaller.
 
 The application is built with Visual Studio 2017 (VS17).  It was compiled with the following properties:
 
-  o Windows SDK Version: 10.0.18362.0
-  o Platfor Toolset: visual Studio 2017 (v141)
+  o Windows Latest SDK Version
+  o Platfor Toolset: visual Studio 2022
   o MFC: Use MFC in a Shared DLL
   o Character Set:  Use Unicode Character Set
   o Additional Include Directories:
@@ -83,6 +83,11 @@ I started this project many years ago when I noticed a some duplication in the a
 Thunderbird's function did not work.
 
 ## Update
+
+### Update 7/24/24
+
+The new Thunderbird puts a line feed character in one of the fields in the csv file.  Replaced
+the line feed with " *** ".
 
 ### Update 6/22/24
 

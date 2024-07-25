@@ -3,6 +3,24 @@
 
 #pragma once
 
+#define DocViewTB
+
+
+#ifdef ButtonDefs
+#include "TBButton.h"
+#include "TBEditBox.h"
+#ifdef DocViewTB
+#include "TBMenu.h"
+#else
+#include "TBCbxMenu.h"
+#endif
+#include "TBCboBx.h"
+#else
+
+#include "TBMenu.h"
+
+#endif
+
 #include "ToolBarBase.h"
 
 
@@ -11,10 +29,47 @@ struct CbxItem;
 
 class MyToolBar : public ToolBarBase {
 
+#ifdef ButtonDefs
+
+TBButton  button;
+TBEditBox editBox;
+
+#ifdef DocViewTB
+
+TBMenu    menu;
+TBMenu    menu1;
+
+#else
+
+TBCbxMenu cbxMenu;
+TBCbxMenu cbxMenu1;
+
+#endif
+
+TBCboBx   cboBx;
+
+#ifdef DocViewTB
+
+TBMenu    saveMenu;
+
+#else
+
+TBCboBx   cboBx1;
+
+#endif
+
+//#else
+
+TBMenu    saveMenu;
+
+#endif
+
 public:
 
   MyToolBar();
  ~MyToolBar() { }
+
+#ifdef ButtonDefs
 
   bool    addButton( uint id, TCchar* caption);
   bool    addEditBox(uint id, int     noChars);
@@ -43,5 +98,10 @@ public:
   void    setWidth(  uint id);
   void    setHeight( uint id);
   bool    getCurSel( uint id, String& s, int& data);
+#else
+
+  bool    addMenu(   uint id, int     idr, int     index);
+
+#endif
   };
 

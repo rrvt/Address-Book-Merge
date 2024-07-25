@@ -5,15 +5,20 @@
 #include "CDoc.h"
 #include "MainFrame.h"
 
+class CSVRcd;
 
-enum DataSource {NotePadSrc, AddrMergSrc};
+
+enum DataSource {NotePadSrc, AddrMergSrc};        // , StoreSrc, StrRptSrc, FontSrc
 
 
 class AddrBookMergeDoc : public CDoc {
 
-PathDlgDsc  pathDsc;
+PathDlgDsc  pathDlgDsc;
 
 DataSource  dataSource;
+
+int         nBooks;
+String      books[32];
 
 protected: // create from serialization only
 
@@ -25,7 +30,7 @@ public:
   virtual BOOL OnNewDocument();
 
   DataSource dataSrc() {return dataSource;}
-  void       display(DataSource ds);
+  void       display(DataSource ds = NotePadSrc);
 
   virtual void serialize(Archive& ar);
 
@@ -39,6 +44,8 @@ public:
 
 private:
 
+  void saveFile(TCchar* title, TCchar* suffix, TCchar* fileType);
+
   void testLine(int n);
   void wholePage();
 
@@ -50,8 +57,37 @@ protected:
 
 public:
 
-  afx_msg void OnFileOpen();
-  afx_msg void OnAddBook();
-  afx_msg void OnProcess();
-  afx_msg void OnFileSave();
+  afx_msg void onFileOpen();
+  afx_msg void onAddBook();
+  afx_msg void onProcess();
+
+  afx_msg void onSaveFile();
+
+  afx_msg void onEditCopy();
   };
+
+
+
+
+
+
+#ifdef Examples
+  afx_msg void onSaveStrRpt();
+  afx_msg void onSaveNotePad();
+  afx_msg void OnTest();
+  afx_msg void displayDataStore();
+  afx_msg void myButton();
+
+  afx_msg void OnComboBoxChng();
+
+  afx_msg void OnTBEditBox();
+  afx_msg void myButton1();
+  afx_msg void onOption11();
+  afx_msg void onOption12();
+  afx_msg void onOption13();
+  afx_msg void onOption21();
+  afx_msg void onOption22();
+  afx_msg void onOption23();
+  afx_msg void OnTestEditBoxes();
+#endif
+

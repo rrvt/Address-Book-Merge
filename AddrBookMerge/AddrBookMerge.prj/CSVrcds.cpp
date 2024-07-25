@@ -1,7 +1,7 @@
 // CSV records, one record per line
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "CSVrcds.h"
 
 CSVRcds csvRcds;

@@ -144,8 +144,6 @@
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
     <ClInclude Include="..\..\Library\Extras\ResourceExtra.h" />
     <ClInclude Include="..\..\Library\Extras\RptOrientDlgTwo.h" />
-    <ClInclude Include="Addr.h" />
-    <ClInclude Include="AddrBook.h" />
     <ClInclude Include="AddrBookMerge.h" />
     <ClInclude Include="AddrBookMergeDoc.h" />
     <ClInclude Include="AddrBookMergeView.h" />
@@ -162,13 +160,10 @@
     <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp" />
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
     <ClCompile Include="..\..\Library\Extras\RptOrientDlgTwo.cpp" />
-    <ClCompile Include="Addr.cpp" />
-    <ClCompile Include="AddrBook.cpp" />
     <ClCompile Include="AddrBookMerge.cpp" />
     <ClCompile Include="AddrBookMergeDoc.cpp" />
     <ClCompile Include="AddrBookMergeView.cpp" />
     <ClCompile Include="CSVrcds.cpp" />
-    <ClCompile Include="CSVrcd.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="MyToolBar.cpp" />
     <ClCompile Include="pch.cpp" />
@@ -184,7 +179,6 @@
     <None Include="res\Toolbar.bmp" />
     <None Include="C:\Users\rrvt\AppData\Roaming\AddrBookMerge\AddrBookMerge.ini" />
     <None Include="..\README.md" />
-    <None Include="..\Data\mumble.csv" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AddrBookMerge.ico" />

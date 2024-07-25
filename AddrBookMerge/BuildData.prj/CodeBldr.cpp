@@ -81,11 +81,13 @@ CSVfld*  d;
   notePad << _T("  void     dataOut(Archive& ar);") << nCrlf;
   notePad << nCrlf;
 
-  prepComparison(_T("=="));
+  notePad << _T("  // Required for Insertion Sort, i.e. data = dtm;") << nCrlf;
+  prepComparison(_T(">="));
+  prepComparison(_T("=="));   notePad << nCrlf;
+
   prepComparison(_T("!="));
   prepComparison(_T("> "));
   prepComparison(_T("< "));
-  prepComparison(_T(">="));
   prepComparison(_T("<="));  notePad << nCrlf;
 
   notePad << _T("// returns either a pointer to data (or datum) at index i in array or zero");
@@ -130,8 +132,9 @@ void CodeBldr::prepAddrIter() {
   notePad << _T("  ARIter(ARIter& iter)     : iterX(iter.iterX), rcd(iter.rcd) { }");
   notePad << nCrlf << nCrlf;
 
-  notePad << _T("  String* operator() (Dir rev = Fwd) {iterX = rev ? rcd.nData() : 0;");
-  notePad << _T(" return rev ? decr() : current();}") << nCrlf;
+  notePad << _T("  String* operator() (Dir rev = Fwd)") << nCrlf;
+  notePad << _T("                                ");
+  notePad << _T("{iterX = rev ? rcd.nData() : 0;   return rev ? decr() : current();}") << nCrlf;
   notePad << _T("  String* operator++ (int)           {return iterX < rcd.nData() ? incr() : 0;}");
   notePad << nCrlf;
   notePad << _T("  String* operator-- (int)           {return iterX > 0           ? decr() : 0;}");
@@ -168,7 +171,7 @@ String   s;
   notePad << nCrlf;
   notePad << nCrlf;
 
-  notePad << _T("#include \"stdafx.h\"") << nCrlf;
+  notePad << _T("#include \"pch.h\"") << nCrlf;
   notePad << _T("#include \"Addr.h\"") << nCrlf;
   notePad << _T("#include \"Utilities.h\"") << nCrlf;
 
@@ -199,8 +202,8 @@ void CodeBldr::prepOpAssn() {
   notePad << _T("CSVfld*  fld;") << nCrlf;
   notePad << _T("int      i;") << nCrlf << nCrlf;
 
-  notePad << _T("  for (fld = iter(), i = 0; fld; fld = iter++, i++) ") << nCrlf;
-  notePad << _T("                                       {String& p = removeQuotes(fld->name);");
+  notePad << _T("  for (fld = iter(), i = 0; fld; fld = iter++, i++)") << nCrlf;
+  notePad << _T("                                 {String& p = removeQuotes(fld->name);");
   notePad << _T("   p.trim();   setFld(i, p);}") << nCrlf;
 
   notePad << _T("  return *this;") << nCrlf;

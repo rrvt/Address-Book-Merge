@@ -43,22 +43,20 @@ ExpandableP <CSVfld, int, CSVFldP, 128> fields;
 
 public:
 
-  CSVRcd() {}
- ~CSVRcd() {clear();}
+                  CSVRcd() {}
+                 ~CSVRcd() {clear();}
 
-  virtual void clear() {fields.clear();}
+  virtual void    clear() {fields.clear();}
 
-  int       nFields() {return fields.end();}
+  int             nFields() {return fields.end();}
 
-  String*   get(int i) {CSVfld* f = datum(i);  return f ? f->get() : 0;}
+  String*         get(int i) {CSVfld* f = datum(i);  return f ? f->get() : 0;}
 
 private:
 
-  virtual void    put(TCchar* s) {fields.nextData().put(s);}
+  virtual void    put(TCchar* tc);
 
   virtual String* get() {CSVfld* f = fields[getI].p; return f ? f->get() : 0;}
-
-  virtual void    copy(CSVRcd& r) { }
 
   // returns either a pointer to data (or datum) at index i in array or zero
 
@@ -68,4 +66,10 @@ private:
 
   friend typename CFldIter;
   };
+
+
+
+
+
+//  virtual void    copy(CSVRcd& r) { }
 

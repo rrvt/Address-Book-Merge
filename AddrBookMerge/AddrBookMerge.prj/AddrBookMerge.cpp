@@ -1,16 +1,15 @@
 // AddrBookMerge.cpp : Defines the class behaviors for the application.
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "AddrBookMerge.h"
 #include "AboutDlg.h"
-#include "IniFile.h"
-#include "MainFrame.h"
-#include "NotePad.h"
-#include "Resource.h"
 #include "AddrBookMergeDoc.h"
 #include "AddrBookMergeView.h"
-
+#include "FileName.h"
+#include "IniFile.h"
+#include "NotePad.h"
+#include "Resource.h"
 
 AddrBookMerge theApp;                       // The one and only AddrBookMerge object
 IniFile     iniFile;
@@ -19,9 +18,8 @@ IniFile     iniFile;
 // AddrBookMerge
 
 BEGIN_MESSAGE_MAP(AddrBookMerge, CWinAppEx)
-  ON_COMMAND(ID_File_New,         &CWinAppEx::OnFileNew)
-  ON_COMMAND(ID_Help,             &OnHelp)
-  ON_COMMAND(ID_App_About,        &OnAppAbout)
+  ON_COMMAND(ID_Help,      &onHelp)
+  ON_COMMAND(ID_App_About, &onAppAbout)
 END_MESSAGE_MAP()
 
 
@@ -32,6 +30,9 @@ BOOL AddrBookMerge::InitInstance() {
   CWinAppEx::InitInstance();
 
   iniFile.setAppDataPath(m_pszHelpFilePath, *this);
+
+  roamPath = getPath(iniFile.getAppDataPath(m_pszHelpFilePath));
+  appPath  = getPath(m_pszHelpFilePath);
 
   notePad.clear();
 
@@ -63,7 +64,7 @@ BOOL AddrBookMerge::InitInstance() {
 
   if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
-  setAppName(_T("ThunderBird Address Book")); setTitle(_T("Merge Books"));
+  setAppName(_T("Address Book Merge")); setTitle(_T("Addresses"));
 
   view()->setFont(_T("Arial"), 12.0);
 
@@ -82,12 +83,12 @@ int AddrBookMerge::ExitInstance() {
   }
 
 
-void AddrBookMerge::OnHelp() {
+void AddrBookMerge::onHelp() {
 String topic = m_pszHelpFilePath; topic += _T(">Introduction");
 
   ::HtmlHelp(m_pMainWnd->m_hWnd, topic,  HH_DISPLAY_TOC, 0);
   }
 
 
-void AddrBookMerge::OnAppAbout() {AboutDlg aboutDlg; aboutDlg.DoModal();}
+void AddrBookMerge::onAppAbout() {AboutDlg aboutDlg; aboutDlg.DoModal();}
 

@@ -10,6 +10,10 @@ class AddrBookMergeDoc;
 
 
 class AddrBookMergeView : public CScrView {
+
+CMenu      menu;
+CMenu      sub;
+
 protected: // create from serialization only
 
   AddrBookMergeView() noexcept;
@@ -20,12 +24,16 @@ public:
 
   virtual        ~AddrBookMergeView() { }
 
+  void            initRptOrietn();
+  void            saveRptOrietn();
+
   virtual BOOL    PreCreateWindow(CREATESTRUCT& cs);
+  virtual void    OnInitialUpdate();
 
   virtual void    displayHeader(DevBase& dev);
   virtual void    displayFooter(DevBase& dev);
 
-  virtual void    onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
+  virtual void    onPreparePrinting(CPrintInfo* info);
   virtual void    onBeginPrinting();
   virtual void    onDisplayOutput();
 
@@ -48,12 +56,37 @@ public:
 
   afx_msg void onOptions();
   afx_msg void onRptOrietn();
+
   afx_msg void OnSetFocus(CWnd* pOldWnd);
+
+  afx_msg void OnLButtonDown(  UINT nFlags, CPoint point);
+  afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+
+  afx_msg void OnContextMenu(  CWnd* ,      CPoint point);
+  afx_msg void onCopy();
+  afx_msg void onPup1();
+  afx_msg void onPup2();
   };
+
 
 
 #ifndef _DEBUG  // debug version in AddrBookMergeView.cpp
 inline AddrBookMergeDoc* AddrBookMergeView::GetDocument() const
-                                         {return reinterpret_cast<AddrBookMergeDoc*>(m_pDocument);}
+                                           {return reinterpret_cast<AddrBookMergeDoc*>(m_pDocument);}
+#endif
+
+
+
+
+
+#ifdef Examples
+#include "StoreRpt.h"
+#endif
+#ifdef Examples
+StoreRpt   dspStore;
+StoreRpt   prtStore;
+#endif
+#ifdef Examples
+  StoreRpt&       storeRpt()  {return dspStore;}
 #endif
 

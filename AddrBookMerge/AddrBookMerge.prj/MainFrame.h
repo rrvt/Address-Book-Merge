@@ -12,8 +12,6 @@ class MainFrame : public CMainFrm {
 CMFCMenuBar   menuBar;
 MyToolBar     toolBar;
 CMFCStatusBar statusBar;
-CMenu         menu;
-CMenu         menu2;
 
 bool          isInitialized;
 
@@ -48,6 +46,8 @@ private:
   void            setupToolBar();
 
 public:
+
+  afx_msg void    OnSysCommand(UINT nID, LPARAM lParam);
 
   afx_msg void    OnMove(int x, int y);
   afx_msg void    OnSize(UINT nType, int cx, int cy);

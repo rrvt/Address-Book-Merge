@@ -4,15 +4,18 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>e153f1a1-4af8-4c46-9adf-3265dd88d079</ProjectGuid>
+    <ProjectGuid>5603F78C-CA06-4698-85D3-B54DC229ED90</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>AddrBookMerge</OutputName>
     <OutputType>Package</OutputType>
+    <Name>AddrBookMerge.wix</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>$(SolutionDir)..\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Debug</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>$(SolutionDir)..\$(Configuration)\</OutputPath>

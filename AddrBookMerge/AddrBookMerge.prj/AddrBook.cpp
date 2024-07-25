@@ -1,7 +1,7 @@
 // Merge Address Books
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "AddrBook.h"
 #include "CSVrcds.h"
 #include "NotePad.h"
@@ -68,6 +68,8 @@ String&  pmail = rcd.getEmail();
   }
 
 
+
+
 bool AddrBook::fixEmail(AddrRcd& rcd) {
 
 String& first  = rcd.First_Name;
@@ -88,12 +90,23 @@ String& screen = rcd.Screen_Name;
   }
 
 
+static TCchar* NoReplies[] = {_T("DoNotReply"),
+                              _T("No_Reply"),
+                              _T("NoReply"),
+                              _T("no-response"),
+                              _T("noresponse")
+                              };
+
+
 bool AddrBook::validateEmail(String& fld) {
 int x;
+int i;
 
   if (!fld.length()) return false;
 
-  x = fld.find(_T('@'));   if (x < 0 || 45 <= x) return false;
+  for (i = 0; i < noElements(NoReplies); i++) if (fld.find(NoReplies[i]) >= 0) return false;
+
+  x = fld.find(_T('@'));   if (x < 1 || 45 <= x) return false;
 
   x = fld.find(_T(','));
 

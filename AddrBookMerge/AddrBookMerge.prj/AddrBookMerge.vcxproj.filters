@@ -21,9 +21,6 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MainFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,13 +33,25 @@
     <ClInclude Include="AddrBookMergeView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Library\Extras\AboutDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Addr.h">
+    <ClInclude Include="..\..\Library\Extras\ResourceExtra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AddrBook.h">
+    <ClInclude Include="..\..\Library\Extras\RptOrientDlgTwo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyToolBar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CSVrcd.h">
@@ -51,23 +60,14 @@
     <ClInclude Include="CSVrcds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Library\Extras\AboutDlg.h">
+    <ClInclude Include="AddrBook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Library\Extras\ResourceExtra.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Library\Extras\RptOrientDlgOne.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyToolBar.h">
+    <ClInclude Include="Addr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MainFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,25 +80,31 @@
     <ClCompile Include="AddrBookMergeView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Addr.cpp">
+    <ClCompile Include="..\..\Library\Extras\RptOrientDlgTwo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AddrBook.cpp">
+    <ClCompile Include="MyToolBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CSVrcds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp">
+    <ClCompile Include="CSVrcd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Library\Extras\RptOrientDlgOne.cpp">
+    <ClCompile Include="AddrBook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyToolBar.cpp">
+    <ClCompile Include="Addr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,26 +114,30 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
     <None Include="res\AddrBookMerge.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\Library\Extras\Options.rc2">
+    <None Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\..\Library\Extras\AboutDlg.rc2">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="C:\Users\rrvt\AppData\Roaming\AddrBookMerge\AddrBookMerge.ini" />
-    <None Include="..\..\Library\Extras\RptOrientOne.rc2">
+    <None Include="..\..\Library\Extras\Options.rc2">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\Library\Extras\RptOrientTwo.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\README.md" />
+    <None Include="..\Data\mumble.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\AddrBookMerge.ico">
+    <Image Include="res\ShortToolbar.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\ShortToolbar.bmp">
+    <Image Include="res\AddrBookMerge.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
