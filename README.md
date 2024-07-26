@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 7/25/24
+
+Restored the help files to the build.
+
 ### Update 7/24/24
 
 The new Thunderbird puts a line feed character in one of the fields in the csv file.  Replaced
