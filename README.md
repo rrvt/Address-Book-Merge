@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 8/4/24
+
+Library Update
+
 ### Update 7/25/24
 
 Restored the help files to the build.

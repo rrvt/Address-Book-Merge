@@ -18,15 +18,9 @@
 
   <MediaTemplate EmbedCab="yes" />
 
-  <UI Id="My_InstallDir.ui">
-    <UIRef Id="WixUI_InstallDir" />
-    <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">
-      NOT Installed
-    </Publish>
-    <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">
-      1
-    </Publish>
-  </UI>
+  <WixVariable Id="WixUILicenseRtf"
+                              Value="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" />
+  <UI Id="My_InstallDir.ui"><UIRef Id="WixUI_InstallDir" /></UI>
 
   <WixVariable Id="WixUIDialogBmp" Value="C:\Program Files (x86)\WixApp\dialog.bmp"/>
   <WixVariable Id="WixUIBannerBmp" Value="C:\Program Files (x86)\WixApp\banner.bmp"/>
@@ -104,7 +98,7 @@
 
 <Fragment>
   <Component Id="Uninstall_Address_Book_Merge.cmp"
-                         Guid="C857F2D1-9A2B-4F11-A2AD-51F173C92519" Directory="AddrBookMerge.pmf">
+                         Guid="5F45264C-EFA2-4D80-8717-EA21BA8F4B04" Directory="AddrBookMerge.pmf">
 
     <Shortcut Id               = "UninstallAddressBookMerge.shc"
               Name             = "Uninstall Address Book Merge"
