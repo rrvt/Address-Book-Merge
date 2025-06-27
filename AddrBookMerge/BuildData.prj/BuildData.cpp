@@ -14,7 +14,7 @@
 
 
 BuildData theApp;                       // The one and only BuildData object
-IniFile     iniFile;
+IniFile   iniFile(theApp);
 
 
 // BuildData
@@ -32,7 +32,7 @@ BOOL BuildData::InitInstance() {
 
   CWinAppEx::InitInstance();
 
-  iniFile.setAppDataPath(m_pszHelpFilePath, *this);
+  iniFile.setAppDataPath(m_pszHelpFilePath);
 
   notePad.clear();
 
@@ -72,14 +72,7 @@ BOOL BuildData::InitInstance() {
   }
 
 
-int BuildData::ExitInstance() {
-
-#ifdef DebugMemoryLeaks
-  _CrtDumpMemoryLeaks();
-#endif
-
-  return CApp::ExitInstance();
-  }
+int BuildData::ExitInstance() {return CApp::ExitInstance();}
 
 
 void BuildData::OnHelp() {

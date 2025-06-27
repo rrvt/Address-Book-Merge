@@ -9,7 +9,7 @@
 #include "IniFile.h"
 #include "OptionsDlg.h"
 #include "Resource.h"
-#include "Resources.h"
+#include "ResourceData.h"
 #include "RptOrientDlgTwo.h"
 
 
@@ -110,21 +110,21 @@ void AddrBookMergeView::onDisplayOutput() {
   }
 
 
-void AddrBookMergeView::displayHeader(DevBase& dev) {
+void AddrBookMergeView::displayHeader(DevStream& dev) {
   switch(doc()->dataSrc()) {
     case NotePadSrc   : dspNote.dspHeader(dev);   break;
     }
   }
 
 
-void AddrBookMergeView::displayFooter(DevBase& dev) {
+void AddrBookMergeView::displayFooter(DevStream& dev) {
   switch(doc()->dataSrc()) {
     case NotePadSrc   : dspNote.dspFooter(dev);   break;
     }
   }
 
 
-void AddrBookMergeView::printHeader(DevBase& dev, int pageNo) {
+void AddrBookMergeView::printHeader(DevStream& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case NotePadSrc: prtNote.prtHeader(dev, pageNo);   break;
     }
@@ -135,7 +135,7 @@ void AddrBookMergeView::printHeader(DevBase& dev, int pageNo) {
 // The output streaming functions are very similar to NotePad's streaming functions so it should
 // not be a great hardship to construct a footer.
 
-void AddrBookMergeView::printFooter(DevBase& dev, int pageNo) {
+void AddrBookMergeView::printFooter(DevStream& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case NotePadSrc : prtNote.prtFooter(dev, pageNo);  break;
     }

@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 6/26/25
+
+Improve memory leak debugging.
+
 ### Update 8/4/24
 
 Library Update

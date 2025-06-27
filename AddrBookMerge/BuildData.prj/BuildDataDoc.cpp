@@ -89,7 +89,7 @@ void BuildDataDoc::serialize(Archive& ar) {
     switch(dataSource) {
       case HeaderSrc  :
       case BodySrc    :
-      case NotePadSrc : notePad.archive(ar);  return;
+      case NotePadSrc : ar << notePad;  return;
       default         : return;
       }
 

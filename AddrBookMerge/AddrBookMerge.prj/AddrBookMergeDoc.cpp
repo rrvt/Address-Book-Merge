@@ -147,7 +147,7 @@ void AddrBookMergeDoc::serialize(Archive& ar) {
 
   if (ar.isStoring())
     switch(dataSource) {
-      case NotePadSrc : notePad.archive(ar); return;
+      case NotePadSrc : ar << notePad; return;
       case AddrMergSrc: addrBook.dataOut(ar); return;
       default         : return;
       }

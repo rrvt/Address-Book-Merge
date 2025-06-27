@@ -3,7 +3,7 @@
 
 #pragma once
 #include "CScrView.h"
-#include "NotePadRpt.h"
+#include "ReportNtPd.h"
 
 
 class AddrBookMergeDoc;
@@ -22,26 +22,29 @@ protected: // create from serialization only
 
 public:
 
-  virtual        ~AddrBookMergeView() { }
+  virtual           ~AddrBookMergeView() { }
 
-  void            initRptOrietn();
-  void            saveRptOrietn();
+  virtual void       initNoteOrietn() { }
+  virtual void       saveNoteOrietn() { }
+  virtual void       initRptOrietn();
+  virtual void       saveRptOrietn();
+  virtual PrtrOrient getOrientation() {return prtNote.prtrOrietn;}
 
-  virtual BOOL    PreCreateWindow(CREATESTRUCT& cs);
-  virtual void    OnInitialUpdate();
+  virtual BOOL       PreCreateWindow(CREATESTRUCT& cs);
+  virtual void       OnInitialUpdate();
 
-  virtual void    displayHeader(DevBase& dev);
-  virtual void    displayFooter(DevBase& dev);
+  virtual void       displayHeader(DevStream& dev);
+  virtual void       displayFooter(DevStream& dev);
 
-  virtual void    onPreparePrinting(CPrintInfo* info);
-  virtual void    onBeginPrinting();
-  virtual void    onDisplayOutput();
+  virtual void       onPreparePrinting(CPrintInfo* info);
+  virtual void       onBeginPrinting();
+  virtual void       onDisplayOutput();
 
-  virtual void    printHeader(DevBase& dev, int pageNo);
-  virtual void    printFooter(DevBase& dev, int pageNo);
-  virtual void    OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+  virtual void       printHeader(DevStream& dev, int pageNo);
+  virtual void       printFooter(DevStream& dev, int pageNo);
+  virtual void       OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
-  AddrBookMergeDoc* GetDocument() const;
+  AddrBookMergeDoc*  GetDocument() const;
 
 public:
 

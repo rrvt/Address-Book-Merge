@@ -7,7 +7,7 @@
 #include "BuildDataDoc.h"
 #include "OptionsDlg.h"
 #include "Resource.h"
-#include "Resources.h"
+#include "ResourceData.h"
 #include "RptOrientDlgOne.h"
 
 
@@ -79,7 +79,7 @@ void BuildDataView::onDisplayOutput() {
   }
 
 
-void BuildDataView::printHeader(DevBase& dev, int pageNo) {
+void BuildDataView::printHeader(DevStream& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case AddrSrc   :
     case HeaderSrc :
@@ -93,7 +93,7 @@ void BuildDataView::printHeader(DevBase& dev, int pageNo) {
 // The output streaming functions are very similar to NotePad's streaming functions so it should
 // not be a great hardship to construct a footer.
 
-void BuildDataView::printFooter(DevBase& dev, int pageNo) {
+void BuildDataView::printFooter(DevStream& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case AddrSrc    :
     case HeaderSrc  :

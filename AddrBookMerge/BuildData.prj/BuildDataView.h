@@ -3,9 +3,9 @@
 
 #pragma once
 #include "CScrView.h"
-#include "NotePadRpt.h"
 
 class BuildDataDoc;
+class DevStream;
 
 
 class BuildDataView : public CScrView {
@@ -20,14 +20,20 @@ public:
 
   virtual ~BuildDataView() { }
 
+  virtual void       initNoteOrietn() { }
+  virtual void       saveNoteOrietn() { }
+  virtual void       initRptOrietn()  { }
+  virtual void       saveRptOrietn()  { }
+  virtual PrtrOrient getOrientation() {return NilOrient;}
+
   virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
   virtual void onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
   virtual void onBeginPrinting();
   virtual void onDisplayOutput();
 
-  virtual void printHeader(DevBase& dev, int pageNo);
-  virtual void printFooter(DevBase& dev, int pageNo);
+  virtual void printHeader(DevStream& dev, int pageNo);
+  virtual void printFooter(DevStream& dev, int pageNo);
   virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
   BuildDataDoc* GetDocument() const;

@@ -7,7 +7,7 @@ AddrBookMerge.chm : *.htm AddrBookMerge.hhp AddrBookMerge.hhc App.css
 Clean.cln    :
   @echo "Cleaning"
   cd $(MAKEDIR)
-  del /F AddrBookMerge.chm
+  if exist AddrBookMerge.chm del /F AddrBookMerge.chm
 
 
 Release/AddrBookMerge.chm : AddrBookMerge.chm
@@ -16,7 +16,7 @@ Release/AddrBookMerge.chm : AddrBookMerge.chm
 
 Release/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Release
-  del AddrBookMerge.chm
+  if exist AddrBookMerge.chm del /F AddrBookMerge.chm
   cd $(MAKEDIR)
 
 
@@ -26,7 +26,7 @@ Debug/AddrBookMerge.chm : AddrBookMerge.chm
 
 Debug/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Debug
-  del AddrBookMerge.chm
+  if exist AddrBookMerge.chm del /F AddrBookMerge.chm
   cd $(MAKEDIR)
 
 

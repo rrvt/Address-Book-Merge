@@ -95,6 +95,7 @@ the operations supported are:
 
   data1    = data;              // Copies all the current elements in data to data1, data is
                                 // unchanged
+  data1    =- data;             // moves all the current elements in data to data1 and clears data
   datum    = data[i];           // where 0 <= i < endN
   data[i]  = datum;             // array expands to encompass i
   data.clear();                 // content is ignored but number of elements is set to zero
@@ -141,6 +142,12 @@ the operations supported are:
 
 #pragma once
 #include "NewAllocator.h"
+
+//#define DebugAllocP
+
+#ifdef DebugAllocP
+#include "MessageBox.h"
+#endif
 
 
 #define ExpandableException _T("Corrupted Expandable(P) structure")
@@ -197,16 +204,23 @@ public:
   ExpandableP();                      // Constructor & Destructor
  ~ExpandableP();
 
- ExpandableP& operator= (ExpandableP& e);                                   // copy the whole array
+  ExpandableP& operator=  (ExpandableP& e);     // Not sure what this does...
+  ExpandableP& operator+= (ExpandableP& e);     // copy the data from e array to this array
 
-  Datum*    allocate()           {NewAlloc(Datum); return AllocNode;}       // allocate a heap
-                                                                            // record
-  void      deallocate(Datum* p) {NewAlloc(Datum); FreeNode(p);}            // Does not clear array
-                                                                            // entry.
-  DatumPtr* getDatumPtr(int i) {return 0 <= i && i < endN ? &tbl[i] : 0;}   // Used for difficult
-                                                                            // cases
+  ExpandableP& operator-= (ExpandableP& e);     // moves the data from e to this
 
-  DatumPtr& operator[] (int i);                                             // return the reference
+#ifdef DebugAllocP
+  Datum*    allocate();
+#else
+  Datum*    allocate()           {NewAlloc(Datum); return AllocNode;}     // allocate a heap
+                                                                          // record
+#endif
+  void      deallocate(Datum* p) {NewAlloc(Datum); FreeNode(p);}          // Does not clear array
+                                                                          // entry.
+  DatumPtr* getDatumPtr(int i) {return 0 <= i && i < endN ? &tbl[i] : 0;} // Used for difficult
+                                                                          // cases
+
+  DatumPtr& operator[] (int i);                                           // return the reference
 
   void      clear() {freeAllNodes();}       // Clears the number of items in array (without
                                             // deleting data)
@@ -264,6 +278,8 @@ private:
   void   freeAllNodes();                  // Free all Nodes
 
   void   copy(ExpandableP& e);            // Copy array e to this array
+  void   copyData(ExpandableP& e);        // Copy data from e to this array
+  void   move(ExpandableP& e);            // Move array e to this array
 
   void   expand(int i);                   // Expand array
   };
@@ -272,8 +288,16 @@ private:
 // Constructor
 
 template <class Datum, class Key, class DatumPtr, const int n>
-ExpandableP<Datum, Key, DatumPtr, n>::ExpandableP() : endN(0), tblN(n > 0 ? n : 1)
-           {NewArray(DatumPtr); tbl = AllocArray(tblN);  ZeroMemory(tbl, tblN * sizeof(DatumPtr));}
+ExpandableP<Datum, Key, DatumPtr, n>::ExpandableP() : endN(0), tblN(n > 0 ? n : 1) {
+NewArray(DatumPtr); tbl = AllocArray(tblN);  ZeroMemory(tbl, tblN * sizeof(DatumPtr));
+
+#ifdef DebugAllocP
+int n = tblN * sizeof(DatumPtr) + sizeof(int);
+  if (n == 12) {
+    messageBox(_T("ExpandableP"));
+    }
+#endif
+  }
 
 
 // We have placed ptrs to nodes in the array.  But now we need to free the nodes and clear the
@@ -289,6 +313,38 @@ ExpandableP<Datum, Key, DatumPtr, n>::~ExpandableP()
 template <class Datum, class Key, class DatumPtr, const int n>
 ExpandableP<Datum, Key, DatumPtr, n>&
  ExpandableP<Datum, Key, DatumPtr, n>::operator= (ExpandableP& e) {clear(); copy(e); return *this;}
+
+
+
+// copy the data from e array to this array
+
+template <class Datum, class Key, class DatumPtr, const int n>
+ExpandableP<Datum, Key, DatumPtr, n>&
+ ExpandableP<Datum, Key, DatumPtr, n>::operator+= (ExpandableP& e)
+                                                             {clear(); copyData(e);  return *this;}
+
+
+// move the whole array
+
+ template <class Datum, class Key, class DatumPtr, const int n>
+ ExpandableP<Datum, Key, DatumPtr, n>&
+  ExpandableP<Datum, Key, DatumPtr, n>::operator-= (ExpandableP& e)
+                                                                  {clear(); move(e); return *this;}
+
+#ifdef DebugAllocP
+// allocate a heap record
+
+template <class Datum, class Key, class DatumPtr, const int n>
+Datum*    ExpandableP<Datum, Key, DatumPtr, n>::allocate() {
+NewAlloc(Datum);
+
+  if (sizeof(Datum) == 12) {
+    messageBox(_T("ExpandableP"));
+    }
+
+  return AllocNode;
+  }
+#endif
 
 
 // return the reference
@@ -478,6 +534,33 @@ void ExpandableP<Datum, Key, DatumPtr, n>::copy(ExpandableP& e) {
   if (e.endN > tblN) expand(e.endN);
 
   for (endN = 0; endN < e.endN; endN++) {tbl[endN] = e.tbl[endN];  e.tbl[endN] = 0;}
+  }
+
+
+// Copy data from e to this array
+
+template <class Datum, class Key, class DatumPtr, const int n>
+void ExpandableP<Datum, Key, DatumPtr, n>::copyData(ExpandableP& e) {
+
+  if (e.endN > tblN) expand(e.endN);
+
+  for (endN = 0; endN < e.endN; endN++) {
+    Datum& src = *e.tbl[endN].p;
+    if (&src) {Datum* p = allocate();   *p = src;   tbl[endN].p = p;}
+    }
+  }
+
+
+// Copy array e to this array
+
+template <class Datum, class Key, class DatumPtr, const int n>
+void ExpandableP<Datum, Key, DatumPtr, n>::move(ExpandableP& e) {
+
+  if (e.endN > tblN) expand(e.endN);
+
+  for (endN = 0; endN < e.endN; endN++) {tbl[endN].p = e.tbl[endN].p;  e.tbl[endN].p = 0;}
+
+  e.endN = 0;
   }
 
 

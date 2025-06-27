@@ -7,7 +7,7 @@ BuildData.chm : *.htm BuildData.hhp BuildData.hhc App.css
 Clean.cln    :
   @echo "Cleaning"
   cd $(MAKEDIR)
-  del /F BuildData.chm
+  if exist BuildData.chm del /F BuildData.chm
 
 
 Release/BuildData.chm : BuildData.chm
@@ -16,7 +16,7 @@ Release/BuildData.chm : BuildData.chm
 
 Release/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Release
-  del BuildData.chm
+  if exist BuildData.chm del /F BuildData.chm
   cd $(MAKEDIR)
 
 
@@ -26,7 +26,7 @@ Debug/BuildData.chm : BuildData.chm
 
 Debug/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Debug
-  del BuildData.chm
+  if exist BuildData.chm del /F BuildData.chm
   cd $(MAKEDIR)
 
 

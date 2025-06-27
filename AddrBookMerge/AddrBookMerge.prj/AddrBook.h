@@ -19,7 +19,7 @@ AddrRcd header;
 public:
 
   AddrBook() {}
- ~AddrBook() { }
+ ~AddrBook();
 
   void onProcess();
 

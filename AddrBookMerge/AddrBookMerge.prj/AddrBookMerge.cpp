@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "AddrBookMerge.h"
 #include "AboutDlg.h"
+#include "AddrBook.h"
 #include "AddrBookMergeDoc.h"
 #include "AddrBookMergeView.h"
 #include "FileName.h"
@@ -12,7 +13,7 @@
 #include "Resource.h"
 
 AddrBookMerge theApp;                       // The one and only AddrBookMerge object
-IniFile     iniFile;
+IniFile       iniFile(theApp);
 
 
 // AddrBookMerge
@@ -29,7 +30,7 @@ BOOL AddrBookMerge::InitInstance() {
 
   CWinAppEx::InitInstance();
 
-  iniFile.setAppDataPath(m_pszHelpFilePath, *this);
+  iniFile.setAppDataPath(m_pszHelpFilePath);
 
   roamPath = getPath(iniFile.getAppDataPath(m_pszHelpFilePath));
   appPath  = getPath(m_pszHelpFilePath);
@@ -73,14 +74,7 @@ BOOL AddrBookMerge::InitInstance() {
 
 
 
-int AddrBookMerge::ExitInstance() {
-
-#ifdef DebugMemoryLeaks
-  _CrtDumpMemoryLeaks();
-#endif
-
-  return CApp::ExitInstance();
-  }
+int AddrBookMerge::ExitInstance() {addrBook.~AddrBook();   return CApp::ExitInstance();}
 
 
 void AddrBookMerge::onHelp() {

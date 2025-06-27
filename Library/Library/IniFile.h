@@ -7,6 +7,7 @@
 
 
 class IniFile {
+CWinApp& theApp;
 String   iniFilePath;
 int      pathLng;
 
@@ -14,17 +15,18 @@ Random   rand;
 
 public:
 
-  IniFile() : rand() {}
- ~IniFile() { }
+  IniFile(CWinApp& app) : theApp(app), rand() { }
+ ~IniFile() {clrTheAppPath();}
 
   String  getAppDataPath(TCchar* helpPath);   // Sets ini File Name & path to appData/Roming
                                               // directory returns path to directory
   void    setPath(TCchar* filePath);          // Sets ini file name & path.
   String  path() {return iniFilePath;}
 
-  void    setFilePath(String& pth,         CWinApp& theApp);
-  void    setFilePath(TCchar* pth,         CWinApp& theApp);
-  void    setAppDataPath(TCchar* helpPath, CWinApp& theApp);
+  void    setFilePath(String& pth);
+  void    setFilePath(TCchar* pth);
+
+  void    setAppDataPath(TCchar* helpPath);
 
   String  initIniDatum(TCchar* section, TCchar* name, TCchar* deflt, String& valu);
   void    saveIniDatum(TCchar* section, TCchar* name, String& valu);
@@ -37,6 +39,8 @@ public:
   bool    write(      TCchar* section, TCchar* key, CString& val);
   bool    write(      TCchar* section, TCchar* key, int      val)
                                                               {return writeInt(section, key, val);}
+  bool    write(      TCchar* section, TCchar* key, bool     val);
+
   bool    writeInt(   TCchar* section, TCchar* key, int      val);
   bool    write(      TCchar* section, TCchar* key, double   val);
   bool    writePwd(   TCchar* section, TCchar* key, String&  val);
@@ -55,6 +59,7 @@ public:
   bool    read(       TCchar* section, TCchar* key, String&  val, TCchar* dflt);
   bool    read(       TCchar* section, TCchar* key, Cstring& val, TCchar* dflt);
   bool    read(       TCchar* section, TCchar* key, int&     val, int     dflt);
+  bool    read(       TCchar* section, TCchar* key, bool&    val, bool    dflt);
   int     readInt(    TCchar* section, TCchar* key, int      def);
   bool    readPwd(    TCchar* section, TCchar* key, String&  val);
 
@@ -65,10 +70,17 @@ String    getIniPath() {return iniFilePath;}
 
 protected:
   void    checkPath();
-  void    setTheAppPath(CWinApp& theApp);
+
+  void    setTheAppPath();
+  void    clrTheAppPath();
+
   String  encodePassword(String& password);
   Tchar   getRandCh();
   String  decodePassword(String& cipher);
+
+private:
+
+  IniFile() : theApp(*(CWinApp*)0), rand() {}
 
   friend class IniSectIter;
   };

@@ -11,6 +11,35 @@
 AddrBook addrBook;
 
 
+static RegExpr junior(_T(".*Jr.*"));
+static RegExpr juniorFirst(_T("^Jr.*"));
+static RegExpr noReply(_T("noreply"));
+static RegExpr noReply1(_T("no_reply"));
+static RegExpr reply(_T("reply"));
+static RegExpr service(_T("^service"));
+static RegExpr sales(_T("^sales"));
+static RegExpr specials(_T("^specials"));
+static RegExpr news(_T("^news"));
+static RegExpr news1(_T("^News"));
+static RegExpr support(_T("^support"));
+
+
+AddrBook::~AddrBook() {
+
+  junior.~RegExpr();
+  juniorFirst.~RegExpr();
+  noReply.~RegExpr();
+  noReply1.~RegExpr();
+  reply.~RegExpr();
+  service.~RegExpr();
+  sales.~RegExpr();
+  specials.~RegExpr();
+  news.~RegExpr();
+  news1.~RegExpr();
+  support.~RegExpr();
+  }
+
+
 
 void AddrBook::onProcess() {
 
@@ -120,10 +149,6 @@ int i;
 
   return true;
   }
-
-
-static RegExpr junior(_T(".*Jr.*"));
-static RegExpr juniorFirst(_T("^Jr.*"));
 
 
 
@@ -239,17 +264,6 @@ int pos1;
 
   firstLng = first.length(); lastLng = last.length(); return true;
   }
-
-
-static RegExpr  noReply(_T("noreply"));
-static RegExpr  noReply1(_T("no_reply"));
-static RegExpr  reply(_T("reply"));
-static RegExpr  service(_T("^service"));
-static RegExpr  sales(_T("^sales"));
-static RegExpr  specials(_T("^specials"));
-static RegExpr  news(_T("^news"));
-static RegExpr  news1(_T("^News"));
-static RegExpr  support(_T("^support"));
 
 
 void AddrBook::removeTroublesomeEmails() {
