@@ -84,6 +84,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 7/3/25
+
+Factored IniFile into three parts.
+
 ### Update 6/26/25
 
 Improve memory leak debugging.

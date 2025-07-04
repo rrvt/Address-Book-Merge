@@ -8,12 +8,12 @@
 #include "AddrBookMergeDoc.h"
 #include "AddrBookMergeView.h"
 #include "FileName.h"
-#include "IniFile.h"
+#include "IniFileEx.h"
 #include "NotePad.h"
 #include "Resource.h"
 
 AddrBookMerge theApp;                       // The one and only AddrBookMerge object
-IniFile       iniFile(theApp);
+IniFileEx     iniFile(theApp);
 
 
 // AddrBookMerge

@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "Database.h"
 
-
+#if 0
 Database database;
 AccessDB accessDB;
 AdrTbl   adrTbl;
@@ -14,6 +14,7 @@ EntTbl   entTbl;
 LocTbl   locTbl;
 MbrTbl   mbrTbl;
 StsTbl   stsTbl;
+#endif
 
 
 bool Database::load(TCchar* path) {
@@ -28,10 +29,4 @@ bool Database::load(TCchar* path) {
 
   return true;
   }
-
-
-Database::~Database() {close();}
-
-
-void Database::close() {accessDB.close();}
 
