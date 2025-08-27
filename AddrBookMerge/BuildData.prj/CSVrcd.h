@@ -56,13 +56,13 @@ private:
 
   virtual void    put(TCchar* s) {fields.nextData().put(s);}
 
-  virtual String* get() {CSVfld* f = fields[getI].p; return f ? f->get() : 0;}
+  virtual String* get() {CSVfld* f = fields[getI]; return f ? f->get() : 0;}
 
   virtual void    copy(CSVRcd& r) { }
 
   // returns either a pointer to data (or datum) at index i in array or zero
 
-  CSVfld* datum(int i) {return 0 <= i && i < nData() ? fields[i].p : 0;}       // or data[i].p
+  CSVfld* datum(int i) {return 0 <= i && i < nData() ? fields[i] : (CSVfld*) 0;}
 
   int     nData()      {return fields.end();}             // returns number of data items in array
 

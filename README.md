@@ -1,3 +1,8 @@
+# Note to Microsoft
+
+This Solution of Address Book Merge will not compile in Release mode giving an error at a zero.
+The solution entitled ReleaseZeroError compiles correctly.
+
 # Address Book Merge
 The stated purpose of this application is to merge eMail entries in multiple Thunderbird Address Books
 exported to CSV files.

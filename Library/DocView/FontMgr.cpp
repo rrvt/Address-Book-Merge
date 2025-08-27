@@ -137,14 +137,18 @@ FontAttr* oldAttr;
 
   scale = fm.scale;
 
-  cur = stkX >= 0 ? data[stkX].p : 0;
+  cur = stkX >= 0 ? data[stkX] : 0;
   }
 
 
 FontAttr* FontMgr::getAttr(int i) {
 FontAttr* attr = datum(i);
 
-  if (!attr) {NewAlloc(FontAttr);   attr = AllocNode;   data[i].p = attr;}
+#if 1
+  attr = &data.getData(i);
+#else
+  if (!attr) {NewAlloc(FontAttr);   attr = AllocNode;   data[i] = attr;}
+#endif
 
   return attr;
   }

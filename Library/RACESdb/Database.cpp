@@ -4,7 +4,8 @@
 #include "pch.h"
 #include "Database.h"
 
-#if 0
+
+#if 0                 // Add the following definitions to App Module
 Database database;
 AccessDB accessDB;
 AdrTbl   adrTbl;
