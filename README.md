@@ -89,6 +89,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 10/22/25
+
+Factored library into three parts, Library, Dialog, DocView.
+
 ### Update 7/3/25
 
 Factored IniFile into three parts.

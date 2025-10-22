@@ -36,9 +36,8 @@ public:
 
 extern AddrBookMerge theApp;
 
-inline void             invalidate() {theApp.invalidate();}
 inline AddrBookMergeDoc*  doc()        {return theApp.doc();}
 inline AddrBookMergeView* view()       {return theApp.view();}
-inline MainFrame*       mainFrm()    {return theApp.mainFrm();}
-inline MyToolBar&       getToolBar() {return mainFrm()->getToolBar();}
+inline MainFrame*         mainFrm()    {return theApp.mainFrm();}
+inline MyToolBar&         getToolBar() {return mainFrm()->getToolBar();}
 

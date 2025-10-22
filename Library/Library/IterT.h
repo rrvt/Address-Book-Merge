@@ -4,6 +4,11 @@
 Datum should be seen, sometimes all the data needs to be seen.  The iterator class implements an
 object that serves up each Datum entry in the array (not the pointer, the Datum object).  It is
 used:
+  class Mumble;
+  typedef IterT<Mumble, Datum> DataStoreIter;                       // Iterator for the Xyz
+
+
+  class Mumble {
    DataStoreIter iter(dataStore);
    Datum*        data;
 

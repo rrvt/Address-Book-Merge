@@ -2,8 +2,9 @@
 
 
 #pragma once
-#include "Archive.h"
 #include "CSVRcd.h"
+
+class Archive;
 
 
 class AddrRcd {

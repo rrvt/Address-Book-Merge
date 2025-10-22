@@ -58,3 +58,6 @@ typedef basic_string<Tchar> tstring;
 #include <afxcontrolbars.h>
 #include <afxcontrolbars.h>
 
+#define DocView
+
+

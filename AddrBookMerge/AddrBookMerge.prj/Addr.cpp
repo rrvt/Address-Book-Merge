@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include "Addr.h"
+#include "Archive.h"
 #include "Utilities.h"
 
 

@@ -128,11 +128,10 @@ public:
   // Requires datum >= datum1 method.   Note, if one use [] to insert data into array, sorting is
   // up to the user...!
 
-//  Datum* operator= (Datum* d) {return d ? (*this) = *d : 0;}
   Datum* operator= (Datum& d);
 
   Datum* operator+= (Datum& d);                 // Append Datum to end of array, copies datum into
-//  Datum* operator+= (Datum* d);                 // array entry
+                                                // array entry
 
   Datum& nextData() {return (*this)[endN];}     // Return reference to next available node in array
                                                 // (at end)
@@ -152,12 +151,12 @@ public:
 
   template<class Key> Datum* bSearch(Key key);  // Binary search (only works on sorted array,
                                                 // Requires datum > key, datum < key, datum == key
-
+#ifdef DocView
   void   probe(TCchar* title);                  // Display internal information on notePad
+#endif
 
 private:
 
-//  void copy(Expandable& e);                     // Copy all elements of array e into a this array
   void append(Expandable& e);                   // Append all elements of array e to array a
 
   void expand(int i);                           // Expand array when required
@@ -237,11 +236,6 @@ Datum* dtm;
 template <class Datum, const int n>
 Datum* Expandable<Datum, n>::operator+= (Datum& d)
                                         {Datum& datum = (*this)[endN];  datum = d;  return &datum;}
-#if 0
-template <class Datum, const int n>
-Datum* Expandable<Datum, n>::operator+= (Datum* d)
-              {if (!d) return 0;    Datum& datum = (*this)[endN];  datum = *d;  return &datum;}
-#endif
 
 // Insert data at index, moving other entries out of the way
 
@@ -329,18 +323,6 @@ int i;
   }
 
 
-#if 0
-// Copy all elements of array e into a this array
-
-template <class Datum, const int n>
-void Expandable<Datum, n>::copy(Expandable& e) {
-
-  if (e.endN > tblN) expand(e.endN);
-
-  for (endN = 0; endN < e.endN; endN++) tbl[endN] = e.tbl[endN];
-  }
-#endif
-
 // Copy data from e to this array
 
 template <class Datum, const int n>
@@ -374,12 +356,11 @@ int    j;
   }
 
 
-#define DebugAlloc
-#ifdef DebugAlloc
-#include "NotePad.h"
-#endif
 
-#ifdef DebugAlloc
+#ifdef DocView
+#include "NotePad.h"
+
+
 template <class Datum, const int n>
 void Expandable<Datum, n>::probe(TCchar* title) {
 String s;
@@ -418,3 +399,20 @@ int n = tblN * sizeof(Datum) + sizeof(int);
     }
 #endif
 #endif
+#if 0
+template <class Datum, const int n>
+Datum* Expandable<Datum, n>::operator+= (Datum* d)
+              {if (!d) return 0;    Datum& datum = (*this)[endN];  datum = *d;  return &datum;}
+#endif
+#if 0
+// Copy all elements of array e into a this array
+
+template <class Datum, const int n>
+void Expandable<Datum, n>::copy(Expandable& e) {
+
+  if (e.endN > tblN) expand(e.endN);
+
+  for (endN = 0; endN < e.endN; endN++) tbl[endN] = e.tbl[endN];
+  }
+#endif
+

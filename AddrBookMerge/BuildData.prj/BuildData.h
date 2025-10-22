@@ -35,7 +35,6 @@ public:
 
 extern BuildData theApp;
 
-inline void           invalidate() {theApp.invalidate();}
 inline BuildDataDoc*  doc()        {return theApp.doc();}
 inline BuildDataView* view()       {return theApp.view();}
 
