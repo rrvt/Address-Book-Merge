@@ -38,18 +38,18 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeBuildCommandLine>nmake $(Configuration)/AddrBookMerge.chm</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>nmake $(Configuration)/Rebuild.rbd</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>nmake $(Configuration)/Clean.cln</NMakeCleanCommandLine>
-    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\$(Configuration)\$(ProjectName)\</IntDir>
+    <NMakeBuildCommandLine>nmake $(Configuration).$(Platform)/AddrBookMerge.chm  TgtFolder=$(Configuration).$(platform)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>nmake $(Configuration).$(Platform)/Rebuild.rbd  TgtFolder=$(Configuration).$(platform)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>nmake $(Configuration).$(Platform)/Clean.cln  TgtFolder=$(Configuration).$(platform)</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)..\$(Configuration).$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)..\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <NMakeBuildCommandLine>nmake $(Configuration)/AddrBookMerge.chm</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>nmake $(Configuration)/Rebuild.rbd</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>nmake $(Configuration)/Clean.cln</NMakeCleanCommandLine>
-    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\$(Configuration)\$(ProjectName)\</IntDir>
+    <NMakeBuildCommandLine>nmake $(Configuration).$(Platform)/AddrBookMerge.chm  TgtFolder=$(Configuration).$(platform)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>nmake $(Configuration).$(Platform)/Rebuild.rbd  TgtFolder=$(Configuration).$(platform)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>nmake $(Configuration).$(Platform)/Clean.cln  TgtFolder=$(Configuration).$(platform)</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)..\$(Configuration).$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)..\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.css" />

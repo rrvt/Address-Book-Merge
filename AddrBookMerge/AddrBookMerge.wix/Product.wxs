@@ -1,74 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix
+  xmlns="http://wixtoolset.org/schemas/v4/wxs"
+  xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
+  >
 
-<Product Id="*" UpgradeCode="50483B31-BA77-4A0C-AE48-7FDA0BD88A63" Language="1033"
-                Manufacturer="Bob -- K6RWY" Name="AddrBookMerge"
-                Version="!(bind.fileVersion.Address_Book_Merge.cmp)"
-                >
+<Package UpgradeCode="50483B31-BA77-4A0C-AE48-7FDA0BD88A63" Language="1033"
+  Manufacturer="Bob -- K6RWY" Name="AddrBookMerge"
+  Version="!(bind.fileVersion.Address_Book_Merge.cmp)" InstallerVersion="500"
+  >
 
-  <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"
-                Manufacturer="Bob -- K6RWY" Description="Installs AddrBookMerge"
-                Comments="Copyright (c) Bob -- K6RWY"
-                />
+  <SummaryInformation Manufacturer="Bob -- K6RWY" Description="Installs AddrBookMerge"
+    Comments="Copyright (c) Bob -- K6RWY"
+    />
 
   <MajorUpgrade Schedule="afterInstallInitialize"
-                AllowDowngrades="no"   IgnoreRemoveFailure="no"   AllowSameVersionUpgrades="no"
-                DowngradeErrorMessage="A newer version of [ProductName] is already installed."
-                />
+    AllowDowngrades="no" IgnoreRemoveFailure="no" AllowSameVersionUpgrades="no"
+    DowngradeErrorMessage="A newer version of [ProductName] is already installed."
+    />
 
   <MediaTemplate EmbedCab="yes" />
 
   <WixVariable Id="WixUILicenseRtf"
                               Value="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" />
-  <UI Id="My_InstallDir.ui"><UIRef Id="WixUI_InstallDir" /></UI>
 
-  <WixVariable Id="WixUIDialogBmp" Value="C:\Program Files (x86)\WixApp\dialog.bmp"/>
-  <WixVariable Id="WixUIBannerBmp" Value="C:\Program Files (x86)\WixApp\banner.bmp"/>
+  <Property Id="WIXUI_INSTALLDIR" Value="ADDRBOOKMERGE.PFF" />
 
-  <Icon     Id="AddrBookMerge01Icon.ico"
-                        SourceFile="$(var.SolutionDir)..\AddrBookMerge.prj\res\AddrBookMerge.ico"/>
-  <Property Id="ARPPRODUCTICON"  Value="AddrBookMerge01Icon.ico" />
+  <UI Id="My_InstallDir.ui">
+    <ui:WixUI Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+  </UI>
 
-  <Feature Id="ProductFeatures" Title="Main Product" Level="1" >
-    <ComponentGroupRef Id="AddrBookMerge.ftr"/>
-    <ComponentGroupRef Id="Uninstall_Address_Book_Merge.ftr"/>
+  <WixVariable Id="WixUIDialogBmp" Value="C:\Program Files (x86)\WixApp\dialog.bmp" />
+  <WixVariable Id="WixUIBannerBmp" Value="C:\Program Files (x86)\WixApp\banner.bmp" />
+
+  <Icon Id="AddrBookMerge01Icon.ico"
+                       SourceFile="$(var.SolutionDir)..\AddrBookMerge.prj\res\AddrBookMerge.ico" />
+  <Property Id="ARPPRODUCTICON" Value="AddrBookMerge01Icon.ico" />
+
+  <Feature Id="ProductFeatures" Title="Main Product" Level="1">
+    <ComponentGroupRef Id="AddrBookMerge.ftr" />
+    <ComponentGroupRef Id="Uninstall_Address_Book_Merge.ftr" />
   </Feature>
-</Product>
+</Package>
 
 <Fragment>
   <ComponentGroup Id="AddrBookMerge.ftr">
-    <ComponentRef Id="Address_Book_Merge.cmp"/>
-    <ComponentRef Id="Help.cmp"/>
+    <ComponentRef Id="Address_Book_Merge.cmp" />
+    <ComponentRef Id="Help.cmp" />
   </ComponentGroup>
   <ComponentGroup Id="Uninstall_Address_Book_Merge.ftr">
-    <ComponentRef Id="Uninstall_Address_Book_Merge.cmp"/>
+    <ComponentRef Id="Uninstall_Address_Book_Merge.cmp" />
   </ComponentGroup>
 </Fragment>
 
 <!--Directory structure-->
 <Fragment>
-  <Directory Id="TARGETDIR" Name="SourceDir">
-    <Directory Id="ProgramFilesFolder">
-      <Directory Id="ADDRBOOKMERGE.PFF" Name="AddrBookMerge" />
-    </Directory>
-
-    <Directory Id="ProgramMenuFolder">
-      <Directory Id="AddrBookMerge.pmf" Name="AddrBookMerge" />
-    </Directory>
-
-    <Directory Id="DesktopFolder" />
-  </Directory>
-
   <Property Id="ApplicationFolderName" Value="AddrBookMerge" />
-  <Property Id="WIXUI_INSTALLDIR"      Value="ADDRBOOKMERGE.PFF"/>
   <Property Id="WixAppFolder"          Value="WixPerMachineFolder" />
+
+  <StandardDirectory Id="ProgramFiles6432Folder">
+    <Directory Id="ADDRBOOKMERGE.PFF" Name="AddrBookMerge" />
+  </StandardDirectory>
+
+  <StandardDirectory Id="ProgramMenuFolder">
+    <Directory Id="AddrBookMerge.pmf" Name="AddrBookMerge" />
+  </StandardDirectory>
+
+  <StandardDirectory Id="DesktopFolder" />
 </Fragment>
 
 <Fragment>
   <Component Id="Address_Book_Merge.cmp"
                          Guid="01BA8ABC-71B7-49E9-A741-85A37FAC69A6" Directory="ADDRBOOKMERGE.PFF">
     <File Id="Address_Book_Merge.cmp"
-                            Source="$(var.SolutionDir)..\Release\AddrBookMerge.exe" KeyPath="yes"/>
+        Source="$(var.AddrBookMerge.TargetDir)\..\Release.Win32\AddrBookMerge.exe" KeyPath="yes" />
 
     <Shortcut Id               = "AddressBookMerge.shc"
               Name             = "Address Book Merge"
@@ -85,20 +89,18 @@
               WorkingDirectory = "ADDRBOOKMERGE.PFF"
               Icon             = "AddrBookMerge01Icon.ico"
               />
-    <Condition>
-      <![CDATA[Installed OR VersionNT >= 601]]>
-    </Condition>
   </Component>
 
   <Component Id="Help.cmp" Guid="B44CFDDD-B213-4F2D-9DD6-C144E886A158"
                                                                      Directory="ADDRBOOKMERGE.PFF">
-    <File Id="Help.cmp" Source="$(var.SolutionDir)..\Release\AddrBookMerge.chm" KeyPath="yes"/>
+    <File Id="Help.cmp"
+        Source="$(var.AddrBookMerge.TargetDir)\..\Release.Win32\AddrBookMerge.chm" KeyPath="yes" />
   </Component>
 </Fragment>
 
 <Fragment>
   <Component Id="Uninstall_Address_Book_Merge.cmp"
-                         Guid="5F45264C-EFA2-4D80-8717-EA21BA8F4B04" Directory="AddrBookMerge.pmf">
+                         Guid="64290344-1549-406A-8874-9A814C0B3897" Directory="AddrBookMerge.pmf">
 
     <Shortcut Id               = "UninstallAddressBookMerge.shc"
               Name             = "Uninstall Address Book Merge"
@@ -107,9 +109,9 @@
               Arguments        = "/x [ProductCode]"
               Icon             = "AddrBookMerge01Icon.ico"
               />
-    <RemoveFolder Id="AddrBookMerge.uni" Directory="AddrBookMerge.pmf" On="uninstall"/>
+    <RemoveFolder Id="AddrBookMerge.uni" Directory="AddrBookMerge.pmf" On="uninstall" />
     <RegistryValue Root="HKCU" Key="Software\Uninstall_Address_Book_Merge.cmp"
-                                          Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+                                         Name="installed" Type="integer" Value="1" KeyPath="yes" />
   </Component>
 </Fragment>
 </Wix>

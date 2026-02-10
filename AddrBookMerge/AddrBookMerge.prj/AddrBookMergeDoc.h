@@ -4,6 +4,7 @@
 #pragma once
 #include "CDoc.h"
 #include "MainFrame.h"
+#include "PathDlgDsc.h"
 
 class CSVRcd;
 

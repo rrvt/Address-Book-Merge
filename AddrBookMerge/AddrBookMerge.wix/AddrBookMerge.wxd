@@ -8,7 +8,7 @@ NPaths=3
 DefKey0=Icon
 Icon.Path=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\
 DefKey1=AddrBookMerge.ftr
-AddrBookMerge.ftr.Path=D:\Sources\AddrBookMerge\Release\
+AddrBookMerge.ftr.Path=D:\Sources\AddrBookMerge\Release.Win32\
 DefKey2=License
 License.Path=D:\Sources\Library\License\
 [Icons]
@@ -21,12 +21,15 @@ IconPath=D:\Sources\AddrBookMerge\AddrBookMerge.prj\res\AddrBookMerge.ico
 ProductName=AddrBookMerge
 Company=Bob -- K6RWY
 WixName=AddrBookMerge
-WixVersion=1.3.3.0
+WixVersion=1.4.0.0
 UpgradeCode=50483B31-BA77-4A0C-AE48-7FDA0BD88A63
 SaveVerAllowed=0
 LicenseRequired=1
 LicensePath=D:\Sources\Library\License\MITLicenseFile.rtf
 IconID=AddrBookMerge01
+IsWin10=0
+IsWin7=0
+IsWinXP=0
 [PFFDirectories]
 NoDirectories=1
 [PFFDirDesc00]
@@ -54,14 +57,13 @@ CurSel=Address Book Merge
 NoComponents=2
 [Ftr00Cmp00]
 ID=Address Book Merge
-Path=D:\Sources\AddrBookMerge\Release\AddrBookMerge.exe
+Path=D:\Sources\AddrBookMerge\Release.Win32\AddrBookMerge.exe
 Guid=01BA8ABC-71B7-49E9-A741-85A37FAC69A6
 IconID=AddrBookMerge01
 IsStartMenu=1
 IsDeskTop=1
 IsVersionAvail=1
-IsWin7=1
 [Ftr00Cmp01]
 ID=Help
-Path=D:\Sources\AddrBookMerge\Release\AddrBookMerge.chm
+Path=D:\Sources\AddrBookMerge\Release.Win32\AddrBookMerge.chm
 Guid=B44CFDDD-B213-4F2D-9DD6-C144E886A158

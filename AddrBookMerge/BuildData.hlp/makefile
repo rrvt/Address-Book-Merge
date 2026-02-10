@@ -10,29 +10,16 @@ Clean.cln    :
   if exist BuildData.chm del /F BuildData.chm
 
 
-Release/BuildData.chm : BuildData.chm
-  copy $(MAKEDIR)\BuildData.chm  $(MAKEDIR)\..\Release\BuildData.chm
+$(TgtFolder)/BuildData.chm : BuildData.chm
+  copy $(MAKEDIR)\BuildData.chm  $(MAKEDIR)\..\$(TgtFolder)\BuildData.chm
 
 
-Release/Clean.cln    : Clean.cln
-  cd $(MAKEDIR)\..\Release
+$(TgtFolder)/Clean.cln    : Clean.cln
+  cd $(MAKEDIR)\..\$(TgtFolder)
   if exist BuildData.chm del /F BuildData.chm
   cd $(MAKEDIR)
 
 
-Debug/BuildData.chm : BuildData.chm
-  copy $(MAKEDIR)\BuildData.chm  $(MAKEDIR)\..\Debug\BuildData.chm
-
-
-Debug/Clean.cln    : Clean.cln
-  cd $(MAKEDIR)\..\Debug
-  if exist BuildData.chm del /F BuildData.chm
-  cd $(MAKEDIR)
-
-
-Release/Rebuild.rbd : Release/Clean.cln Release/BuildData.chm
-
-
-Debug/Rebuild.rbd   : Debug/Clean.cln Debug/BuildData.chm
+$(TgtFolder)/Rebuild.rbd : $(TgtFolder)/Clean.cln $(TgtFolder)/BuildData.chm
 
 

@@ -5,6 +5,7 @@
 #include "CDoc.h"
 #include "CodeBldr.h"
 #include "MainFrame.h"
+#include "PathDlgDsc.h"
 
 
 enum DataSource {NilSrc, NotePadSrc, AddrSrc, HeaderSrc, BodySrc};
