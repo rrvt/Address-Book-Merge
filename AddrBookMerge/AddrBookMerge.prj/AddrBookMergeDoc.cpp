@@ -46,27 +46,6 @@ BOOL AddrBookMergeDoc::OnNewDocument() {return CDocument::OnNewDocument();}
 
 void AddrBookMergeDoc::onEditCopy() {clipLine.load();}
 
-#if 0
-void AddrBookMergeDoc::onFileOpen() {
-
-  notePad.clear();   dataSource = StoreSrc;
-
-  pathDlgDsc(_T("Ugly Example"), pathDlgDsc.name, _T("txt"), _T("*.txt"));
-
-  if (!setOpenPath(pathDlgDsc)) return;
-
-  pathDlgDsc.name = getMainName(path);
-
-  if (!OnOpenDocument(path)) messageBox(_T(" Not Loaded!"));
-
-#ifdef Examples
-  store.setName(pathDlgDsc.name);
-#endif
-
-  display(StoreSrc);
-  }
-
-#else
 
 void AddrBookMergeDoc::onFileOpen() {
 String s;
@@ -106,7 +85,6 @@ String mainName;
   display();
   }
 
-#endif
 
 
 
@@ -114,11 +92,7 @@ void AddrBookMergeDoc::onProcess() {addrBook.onProcess();   addrBook.dspRecords(
 
 
 void AddrBookMergeDoc::onSaveFile() {
-#if 1
   dataSource = AddrMergSrc;   if (setSaveAsPath(pathDlgDsc)) OnSaveDocument(path);
-#else
-  dataSource = StoreSrc; saveFile(_T("Save File"), _T(""), _T("txt")); display(StoreSrc);
-#endif
   }
 
 
@@ -128,11 +102,11 @@ void AddrBookMergeDoc::display(DataSource ds) {dataSource = ds; invalidate();}
 
 void AddrBookMergeDoc::saveFile(TCchar* title, TCchar* suffix, TCchar* fileType) {
 String fileName = path;
-int    pos      = fileName.find_last_of(_T('\\'));
+int    pos      = (int)fileName.find_last_of(_T('\\'));
 String ext      = _T("*."); ext += fileType;
 String ttl      = title;    ttl += _T(" Output");
 
-  fileName = fileName.substr(pos+1);   pos = fileName.find_first_of(_T('.'));
+  fileName = fileName.substr(pos+1);   pos = (int)fileName.find_first_of(_T('.'));
   fileName = fileName.substr(0, pos);  fileName += suffix;
 
   pathDlgDsc(ttl, fileName, fileType, ext);
@@ -172,7 +146,7 @@ void AddrBookMergeDoc::Dump(CDumpContext& dc) const {CDocument::Dump(dc);}
 //-------------------------------------------------------------------------
 
 
-#ifdef Examples
+#if 0 //def Examples
 
 static CbxItem cbxText[] = {{_T("Zeta"),     1},
                             {_T("Beta"),     2},
@@ -315,7 +289,7 @@ String s;
 void AddrBookMergeDoc::displayDataStore() {display(StoreSrc);}
 
 #endif
-#ifdef Examples
+#if 0 //def Examples
   ON_COMMAND(      ID_Button,      &myButton)
   ON_CBN_KILLFOCUS(ID_EditBox,     &OnTBEditBox)
   ON_COMMAND(      ID_EditBox,     &OnTBEditBox)
@@ -356,7 +330,7 @@ void AddrBookMergeDoc::onSaveNotePad() {
   display(StoreSrc);
   }
 #endif
-#ifdef Examples
+#if 0 //def Examples
       case StoreSrc : store.load(ar); return;
 #endif
 #if 0
@@ -402,11 +376,37 @@ String s;
   notePad << s;
   }
 #endif
-#ifdef Examples
+#if 0  //def Examples
       case StoreSrc   : store.store(ar); return;
       case StrRptSrc  : view()->storeRpt().txtOut( ar, 1.35); return;
 #endif
-#ifdef Examples
+#if 0  //def Examples
 #include "Store.h"
+#endif
+#if 0
+void AddrBookMergeDoc::onFileOpen() {
+
+  notePad.clear();   dataSource = StoreSrc;
+
+  pathDlgDsc(_T("Ugly Example"), pathDlgDsc.name, _T("txt"), _T("*.txt"));
+
+  if (!setOpenPath(pathDlgDsc)) return;
+
+  pathDlgDsc.name = getMainName(path);
+
+  if (!OnOpenDocument(path)) messageBox(_T(" Not Loaded!"));
+
+#ifdef Examples
+  store.setName(pathDlgDsc.name);
+#endif
+
+  display(StoreSrc);
+  }
+
+#else
+#endif
+#if 1
+#else
+  dataSource = StoreSrc; saveFile(_T("Save File"), _T(""), _T("txt")); display(StoreSrc);
 #endif
 

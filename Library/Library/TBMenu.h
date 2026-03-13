@@ -23,13 +23,13 @@ String caption;
   TBMenu* install(const CbxItem cbxItem[], int n, uint    imageIndex);
   bool    setCaption();
   uint    getId() {return id;}
-  uint    getCmdId();
+//  uint    getCmdId();
 
 private:
 
-  void    addItem(TCchar* txt, int data);
-  TBMenu* finInstall(TCchar* caption);
-  void    setMaxChars(TCchar* txt) {int t;   t = (int) _tcslen(txt);   if (t > maxChars) maxChars = t;}
+//  void    addItem(TCchar* txt, int data);
+//  TBMenu* finInstall(TCchar* caption);
+  void    setMaxChars(TCchar* txt) {int t;   t = tcslen(txt);   if (t > maxChars) maxChars = t;}
   };
 
 

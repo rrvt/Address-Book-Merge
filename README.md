@@ -90,6 +90,10 @@ Thunderbird's function did not work.
 
 ## Update
 
+### Update 3/12/26
+
+Added x64 platform.  Lots of changes in the library.
+
 ### Update 2/10/26
 
 Added ability to build in 64 bit mode.  Upgraded Wix to HeatWave version 4.

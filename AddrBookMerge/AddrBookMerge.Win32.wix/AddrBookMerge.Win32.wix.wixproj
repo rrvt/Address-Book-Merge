@@ -1,0 +1,30 @@
+<Project Sdk="WixToolset.Sdk/6.0.2">
+  <PropertyGroup>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <Platforms>x86;x64</Platforms>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputName>AddrBookMerge</OutputName>
+    <Name>AddrBookMerge.wix</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>$(SolutionDir)..\$(Configuration)\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>..\Release.Win32\</OutputPath>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>..\Release.x64\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="AddrBookMerge.Win32.wxd" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Util.wixext" Version="6.0.2" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="6.0.2" />
+  </ItemGroup>
+</Project>
